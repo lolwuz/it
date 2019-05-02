@@ -6,11 +6,14 @@ from app import app, db
 from constant import dice_dict, word_points
 from models.board import Board, BoardSchema
 
+from flask_cors import cross_origin
+
 board_schema = BoardSchema()
 boards_schema = BoardSchema(many=True)
 
 
 @app.route("/board", methods=["POST"])
+@cross_origin()
 def add_board():
     def code_generator(size=6):
         return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(size))
@@ -34,6 +37,7 @@ def add_board():
 
 # endpoint to show all boards
 @app.route("/boards", methods=["GET"])
+@cross_origin()
 def get_boards():
     all_boards = Board.query.all()
     result = boards_schema.dump(all_boards)
@@ -42,6 +46,7 @@ def get_boards():
 
 # endpoint to get board detail by id
 @app.route("/board/<game_code>", methods=["GET"])
+@cross_origin()
 def board_detail(game_code):
     board = Board.query.filter_by(game_code=game_code).first()
     return board_schema.jsonify(board)
@@ -49,6 +54,7 @@ def board_detail(game_code):
 
 # endpoint to update board
 @app.route("/board/<game_code>/check/<word>", methods=["GET"])
+@cross_origin()
 def is_valid_word(game_code, word):
     board = Board.query.filter_by(game_code=game_code).first()
 

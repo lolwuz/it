@@ -11,23 +11,32 @@
     <div class="container">
         <div class="row">
             <div class="col-md">
-                <h3 id="Title">Start game</h3>
+                <div id="start-card" class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Boggle jquery</h5>
 
-                <div class="form-row align-items-center">
-                    <div class="col-sm-3 my-1">
-                        <label class="sr-only" for="inlineFormInputName">Name</label>
-                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Game code">
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-9">
+                                <label class="sr-only" for="inlineFormInputName">Name</label>
+                                <input id="code-input" type="text" class="form-control" id="inlineFormInputName"
+                                    placeholder="Game code">
+                            </div>
+                            <div class="col-auto">
+                                <button id="start-button" class="btn btn-outline-primary btn-block">Start</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-auto my-1">
-                        <button type="submit" class="btn btn-primary">Start</button>
+                    <div class="card-footer">
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-12 my-1">
+                                <button id="random-button" class="btn btn-outline-success btn-block">Play a random
+                                    game</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="form-row align-items-center">
-                    <div class="col-sm-6 my-1">
-                        <button type="submit" class="btn btn-success">Roll the dice</button>
-                    </div>
-                </div>
+
+                <div id="game-card"></div>
             </div>
 
             <div class="col-md">

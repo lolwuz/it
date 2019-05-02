@@ -18,6 +18,10 @@ td {
     text-align: center;
 }
 
+#start-card {
+    margin-top: 40px;
+}
+
 #game-table {
     margin-top: 40px;
 
@@ -34,10 +38,15 @@ td {
 }
 
 #guesses {
+    overflow-y: hidden;
     margin-top: 20px;
     width: 300px;
     max-height: 300px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.card-margin {
+    margin-top: 20px;
 }
 
 .hover {
@@ -46,4 +55,8 @@ td {
 
 .selected {
     background: salmon;
+}
+
+.time-warning {
+    color: red;
 }

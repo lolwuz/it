@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <h3 id="Title">Start game</h3>
+
+                <div class="form-row align-items-center">
+                    <div class="col-sm-3 my-1">
+                        <label class="sr-only" for="inlineFormInputName">Name</label>
+                        <input type="text" class="form-control" id="inlineFormInputName" placeholder="Game code">
+                    </div>
+                    <div class="col-auto my-1">
+                        <button type="submit" class="btn btn-primary">Start</button>
+                    </div>
+                </div>
+                
+                <div class="form-row align-items-center">
+                    <div class="col-sm-6 my-1">
+                        <button type="submit" class="btn btn-success">Roll the dice</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <table id="game-table" class="table-bordered">
+                    <tbody id="game-table-body"></tbody>
+                </table>
+
+                <h4 id="last-word">...</h4>
+                <div id="guesses"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

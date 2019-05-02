@@ -1,0 +1,49 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+td {
+    align-content: center;
+}
+
+.table-text {
+    width: 70px;
+    height: 70px;
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+#game-table {
+    margin-top: 40px;
+
+    height: 400px;
+    width: 400px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#guesses {
+    margin-top: 20px;
+    width: 300px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.hover {
+    background: gray;
+}
+
+.selected {
+    background: salmon;
+}

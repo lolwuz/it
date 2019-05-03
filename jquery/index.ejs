@@ -10,18 +10,18 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md">
+            <div class="col-md-4">
                 <div id="start-card" class="card">
                     <div class="card-body">
                         <h5 class="card-title">Boggle jquery</h5>
 
                         <div class="form-row align-items-center">
-                            <div class="col-sm-9">
+                            <div class="col-sm-7">
                                 <label class="sr-only" for="inlineFormInputName">Name</label>
                                 <input id="code-input" type="text" class="form-control" id="inlineFormInputName"
                                     placeholder="Game code">
                             </div>
-                            <div class="col-auto">
+                            <div class="col-sm-5">
                                 <button id="start-button" class="btn btn-outline-primary btn-block">Start</button>
                             </div>
                         </div>
@@ -36,15 +36,14 @@
                     </div>
                 </div>
 
-                <div id="game-card"></div>
+                <div id="game-card" class="card-body"></div>
             </div>
 
-            <div class="col-md">
+            <div class="col-md-8">
                 <table id="game-table" class="table-bordered">
                     <tbody id="game-table-body"></tbody>
                 </table>
 
-                <h4 id="last-word">...</h4>
                 <div id="guesses"></div>
             </div>
         </div>

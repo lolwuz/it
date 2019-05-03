@@ -1,7 +1,9 @@
 import secrets
 import string
+import ast
 from random import shuffle, randint
 from flask import jsonify
+import itertools
 from app import app, db
 from constant import dice_dict, word_points
 from models.board import Board, BoardSchema
@@ -77,3 +79,61 @@ def is_valid_word(game_code, word):
                 check['points'] = 11
 
     return jsonify(check)
+
+
+@app.route("/board/solution/<game_code>", methods=["GET"])
+@cross_origin()
+def get_solution(game_code):
+    board = Board.query.filter_by(game_code=game_code).first()
+
+    # letters on the board
+    letters = ast.literal_eval(board.board)
+
+    graph = {
+        '0': {'1', '4', '5'},
+        '1': {'0', '2', '4', '5', '6'},
+        '2': {'1', '3', '5', '6', '7'},
+        '3': {'2', '6', '7'},
+        '4': {'0', '1', '5'},
+        '5': {'0', '1', '2', '4', '6', '8', '9', '10'},
+        '6': {'1', '2', '3', '5', '7', '9', '10', '11'},
+        '7': {'2', '3', '6'},
+        '8': {'4', '5', '9', '12', '13'},
+        '9': {'4', '5', '6', '8', '10', '12', '13', '14'},
+        '10': {'5', '6', '7', '9', '11', '13', '14', '15'},
+        '11': {'6', '7', '10', '14', '15'},
+        '12': {'8', '9', '13' },
+        '13': {'8', '9', '10', '12', '14'},
+        '14': {'9', '10', '11', '13', '15'},
+        '15': {'10', '11', '14'}
+    }
+
+    for key1 in graph:
+        for key2 in graph:
+            if key1 != key2:
+                paths = list(bfs_paths(graph, key1, key2))
+
+    return jsonify(letters)
+
+
+
+def bfs_paths(graph, start, goal):
+    queue = [(start, [start])]
+
+    while queue:
+        (vertex, path) = queue.pop(0)
+
+        for next in graph[vertex] - set(path):
+            if next == goal:
+                yield path + [next]
+            else:
+                queue.append((next, path + [next]))
+
+
+def get_dictionary():
+    dictionary = set()
+    with [line.rstrip('\n') for line in open('constant/opentaal_basis.txt', 'r')] as f:
+        for word in f:
+            dictionary.add(word)
+
+    return dictionary

@@ -1,5 +1,5 @@
-import 'styles/index.scss';
 import 'bootstrap-material-design/dist/css/bootstrap-material-design.css';
+import 'styles/index.scss';
 import $ from 'jquery';
 
 class Game {
@@ -14,9 +14,8 @@ class Game {
     }
 
     random_game() {
-        console.log("starting_random")
         $.ajax({
-            url: "http://localhost:5000/board",
+            url: "http://141.252.234.131:5000/board",
             type: 'POST',
             crossDomain: true,
 
@@ -40,9 +39,11 @@ class Game {
         let body = $('<div class="card-body"/>').appendTo(this.game_card);
         let code = $('<h5 id="code"/>').appendTo(body);
         let timer = $('<h6 id="timer"/>').appendTo(body);
+        let points = $('<h6 id="points"/>').appendTo(body);
         
         code.text("Game code: " + this.current_board.game_code);
         timer.text("Time remaining: " + this.current_board.time);
+        points.text("Total points scored: " + 0);
 
         let button = $('<button class="btn btn-outline-primary"/>').appendTo(this.game_card);
 
@@ -66,6 +67,7 @@ class Board {
         this.time = time;
         this.begin_time = null;
         this.intervals = [];
+        this.points = 0;
 
         $('#game-table-body').mousedown(() => {
             this.on_mouse_down();
@@ -78,7 +80,7 @@ class Board {
 
     get_board() {
         $.ajax({
-            url: "http://localhost:5000/board/" + this.game_code,
+            url: "http://141.252.234.131:5000/board/" + this.game_code,
             crossDomain: true,
 
             success: (data) => {
@@ -123,10 +125,9 @@ class Board {
 
     check_word(word) {
         let guesses = $("#guesses");
-        this.guesses.push(word)
 
         $.ajax({
-            url: "http://localhost:5000/board/" + this.game_code + "/check/" + word.toLowerCase(),
+            url: "http://141.252.234.131:5000/board/" + this.game_code + "/check/" + word.toLowerCase(),
             crossDomain: true,
 
             success: (data) => {
@@ -134,26 +135,58 @@ class Board {
                 guess.addClass("alert");
                 guess.text(data.points + " - " + word);
 
+                // Check if valid word.
                 if (data.is_valid) {
-                    guess.addClass("alert-success");
+                    // Update points 
+                    if (!this.guesses.includes(word)) { // Only when not already guessed.
+                        // Valid word and not guessed. Adding points to score.
+                        this.points += data.points;
+                        $("#points").text("Total points scored: " + this.points);
+
+                         // Add alert success 
+                        guess.addClass("alert-success");
+
+                        this.guesses.push(word);
+                    } else {
+                        // Word is valid but already guessed.
+                        guess.addClass("alert-info");
+                    }
                 }
                 else {
-                    guess.addClass("alert-warning");
+                    // Invalid word error.
+                    guess.addClass("alert-danger");
                 }
             }
         })
+
+        
     }
 
     clear_board() {
         $('#game-table-body').remove();
     }
 
-    on_hover(board_position, element) {
-        if (this.mouse_down) {
-            element.addClass('selected');
+    is_inbound(board_position) {
+        if (this.selected.length < 1)
+            return true;
 
-            if (!this.selected.includes(board_position))
-                this.selected.push(board_position);
+        let last_position = this.selected[this.selected.length - 1];
+
+        if (Math.abs(board_position - last_position) < 6)
+            return true;
+        else 
+            return false; 
+    }
+
+    on_hover(board_position, element) {
+
+        if (this.mouse_down) {
+            if(this.is_inbound(board_position)) {
+                element.addClass('selected');
+
+                if (!this.selected.includes(board_position))
+                        this.selected.push(board_position);
+            }
         }
     }
 

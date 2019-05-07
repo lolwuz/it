@@ -1,246 +1,266 @@
-import 'bootstrap-material-design/dist/css/bootstrap-material-design.css';
-import 'styles/index.scss';
-import $ from 'jquery';
+/* eslint-disable camelcase */
+import 'styles/index.scss'
+import { url } from 'constants.js'
+import $ from 'jquery'
 
 class Game {
-    constructor(){
-        this.start_button = $("#start-button");
-        this.random_button = $("#random-button");
-        this.game_card = $("#game-card");
-        this.current_board = null;
-    
-        this.random_button.click(() => this.random_game());
-        this.start_button.click(() => this.existing_game());
-    }
+	constructor () {
+		this.start_button = $('#start-button')
+		this.random_button = $('#random-button')
+		this.game_card = $('#game-card')
+		this.current_board = null
 
-    random_game() {
-        $.ajax({
-            url: "http://141.252.234.131:5000/board",
-            type: 'POST',
-            crossDomain: true,
+		this.random_button.click(() => this.random_game())
+		this.start_button.click(() => this.existing_game())
+	}
 
-            success: (data) => {
-                this.current_board = new Board(data.game_code, 60);
-                this.setup_game();
-            }
-        });
-    }
+	random_game () {
+		$.ajax({
+			url: url + 'board',
+			type: 'POST',
+			crossDomain: true,
 
-    existing_game() {
-        let game_code = $("#code-input").val();
+			success: (data) => {
+				this.current_board = new Board(data.game_code, 60)
+				this.setup_game()
+			}
+		})
+	}
 
-        this.current_board = new Board(game_code);
+	existing_game () {
+		let game_code = $('#code-input').val()
 
-        this.setup_game();
-    }
+		this.current_board = new Board(game_code)
 
-    setup_game () {
-        this.game_card.addClass('card card-margin') 
-        let body = $('<div class="card-body"/>').appendTo(this.game_card);
-        let code = $('<h5 id="code"/>').appendTo(body);
-        let timer = $('<h6 id="timer"/>').appendTo(body);
-        let points = $('<h6 id="points"/>').appendTo(body);
-        
-        code.text("Game code: " + this.current_board.game_code);
-        timer.text("Time remaining: " + this.current_board.time);
-        points.text("Total points scored: " + 0);
+		this.setup_game()
+	}
 
-        let button = $('<button class="btn btn-outline-primary"/>').appendTo(this.game_card);
+	setup_game () {
+		this.game_card.empty()
 
-        button.text("start timer");
+		this.game_card.addClass('card card-margin')
+		let body = $('<div class="card-body"/>').appendTo(this.game_card)
+		let code = $('<h5 id="code"/>').appendTo(body)
+		let timer = $('<h6 id="timer"/>').appendTo(body)
+		let points = $('<h6 id="points"/>').appendTo(body)
 
-        button.click (() => this.start()); 
-    }
+		code.text('Game code: ' + this.current_board.game_code)
+		timer.text('Time remaining: ' + this.current_board.time)
+		points.text('Total points scored: ' + 0)
 
-    start () {
-        this.current_board.get_board();
-    }
+		let button = $('<button class="btn btn-outline-primary"/>').appendTo(this.game_card)
+
+		button.text('start timer')
+
+		button.click(() => this.start())
+	}
+
+	start () {
+		this.current_board.get_board()
+	}
 }
 
 class Board {
-    constructor(game_code, time) {
-        this.game_code = game_code;
-        this.mouse_down = false;  // Mouse down
-        this.selected = []; // List of all selected position on the board
-        this.letters = []; // List with all the letters
-        this.guesses = [];
-        this.time = time;
-        this.begin_time = null;
-        this.intervals = [];
-        this.points = 0;
+	constructor (game_code, time) {
+		/**
+		 * @param game_code unique code of the game
+		 * @param time time this board can be played
+		 */
+		this.table_body = $('#game-table-body')
+		this.game_code = game_code
+		this.mouse_down = false // Mouse down
+		this.selected = [] // List of all selected position on the board
+		this.letters = [] // List with all the letters
+		this.guesses = []
+		this.time = time
+		this.begin_time = null
+		this.intervals = []
+		this.points = 0
 
-        $('#game-table-body').mousedown(() => {
-            this.on_mouse_down();
-        });
+		this.new_table_body()
+	}
 
-        $('#game-table-body').mouseup(() => {
-            this.on_mouse_up();
-        });
-    }
+	new_table_body () {
+		/** Remove the table body if old game is still loaded */
+		this.table_body.empty()
 
-    get_board() {
-        $.ajax({
-            url: "http://141.252.234.131:5000/board/" + this.game_code,
-            crossDomain: true,
+		this.table_body.mousedown(() => {
+			this.on_mouse_down()
+		})
 
-            success: (data) => {
-                let board = [];
-                for (let i = 2; i < data.board.length; i = i + 5) {
-                    board.push(data.board[i]);
-                }
+		this.table_body.mouseup(() => {
+			this.on_mouse_up()
+		})
+	}
 
-                let tbody = $('#game-table-body');
-                for (let i = 0; i < board.length; i = i + 4) {
-                    // create an <tr> element, append it to the <tbody> and cache it as a variable:
-                    let tr = $('<tr/>').appendTo(tbody);
+	get_board () {
+		this.new_table_body()
 
-                    for (let j = 0; j < 4; j++) {
-                        // append <td> elements to previously created <tr> element:
-                        let td = $('<td/>').appendTo(tr);
-                        let text = $('<div/>').appendTo(td);
-                        let letter = board[i + j];
+		$.ajax({
+			url: url + 'board/' + this.game_code,
+			crossDomain: true,
 
-                        text.addClass("table-text");
-                        text.text(letter);
+			success: (data) => {
+				let board = []
+				for (let i = 2; i < data.board.length; i = i + 5) {
+					board.push(data.board[i])
+				}
 
-                        this.letters.push(letter);
+				let tbody = this.table_body
+				for (let i = 0; i < board.length; i = i + 4) {
+					// create an <tr> element, append it to the <tbody> and cache it as a variable:
+					let tr = $('<tr/>').appendTo(tbody)
 
-                        text.hover(() => {
-                            td.addClass('hover');
-                            this.on_hover(i + j, td);
-                        })
+					for (let j = 0; j < 4; j++) {
+						// append <td> elements to previously created <tr> element:
+						let td = $('<td/>').appendTo(tr)
+						let text = $('<div/>').appendTo(td)
+						let letter = board[i + j]
 
-                        text.mouseleave(() => {
-                            td.removeClass('hover');
-                        })
-                    }
+						text.addClass('table-text')
+						text.text(letter)
 
-                    this.begin_time = new Date();
-                    let time_interval = setInterval(() => this.update_time(), 1000);
-                    this.intervals.push(time_interval);
-                }
-            }
-        });
-    }
+						this.letters.push(letter)
 
-    check_word(word) {
-        let guesses = $("#guesses");
+						text.hover(() => {
+							td.addClass('hover')
+							this.on_hover(i + j, td)
+						})
 
-        $.ajax({
-            url: "http://141.252.234.131:5000/board/" + this.game_code + "/check/" + word.toLowerCase(),
-            crossDomain: true,
+						text.mouseleave(() => {
+							td.removeClass('hover')
+						})
+					}
 
-            success: (data) => {
-                let guess = $('<div/>').prependTo(guesses);
-                guess.addClass("alert");
-                guess.text(data.points + " - " + word);
+					this.begin_time = new Date()
+					let time_interval = setInterval(() => this.update_time(), 1000)
+					this.intervals.push(time_interval)
+				}
+			}
+		})
+	}
 
-                // Check if valid word.
-                if (data.is_valid) {
-                    // Update points 
-                    if (!this.guesses.includes(word)) { // Only when not already guessed.
-                        // Valid word and not guessed. Adding points to score.
-                        this.points += data.points;
-                        $("#points").text("Total points scored: " + this.points);
+	check_word (word) {
+		let guesses = $('#guesses')
 
-                         // Add alert success 
-                        guess.addClass("alert-success");
+		$.ajax({
+			url: url + 'board/' + this.game_code + '/check/' + word.toLowerCase(),
+			crossDomain: true,
 
-                        this.guesses.push(word);
-                    } else {
-                        // Word is valid but already guessed.
-                        guess.addClass("alert-info");
-                    }
-                }
-                else {
-                    // Invalid word error.
-                    guess.addClass("alert-danger");
-                }
-            }
-        })
+			success: (data) => {
+				let guess = $('<div/>').prependTo(guesses)
+				guess.addClass('alert')
+				guess.text(data.points + ' - ' + word)
 
-        
-    }
+				// Check if valid word.
+				if (data.is_valid) {
+					// Update points
+					if (!this.guesses.includes(word)) { // Only when not already guessed.
+						// Valid word and not guessed. Adding points to score.
+						this.points += data.points
+						$('#points').text('Total points scored: ' + this.points)
 
-    clear_board() {
-        $('#game-table-body').remove();
-    }
+						// Add alert success
+						guess.addClass('alert-success')
 
-    is_inbound(board_position) {
-        if (this.selected.length < 1)
-            return true;
+						this.guesses.push(word)
+					} else {
+						// Word is valid but already guessed.
+						guess.addClass('alert-info')
+					}
+				} else {
+					// Invalid word error.
+					guess.addClass('alert-danger')
+				}
+			}
+		})
+	}
 
-        let last_position = this.selected[this.selected.length - 1];
+	is_inbound (board_position) {
+		if (this.selected.length < 1) { return true }
 
-        if (Math.abs(board_position - last_position) < 6)
-            return true;
-        else 
-            return false; 
-    }
+		let last_position = this.selected[this.selected.length - 1]
 
-    on_hover(board_position, element) {
+		if (Math.abs(board_position - last_position) < 6) { return true } else { return false }
+	}
 
-        if (this.mouse_down) {
-            if(this.is_inbound(board_position)) {
-                element.addClass('selected');
+	on_hover (board_position, element) {
+		if (this.mouse_down) {
+			if (this.is_inbound(board_position)) {
+				element.addClass('selected')
 
-                if (!this.selected.includes(board_position))
-                        this.selected.push(board_position);
-            }
-        }
-    }
+				if (!this.selected.includes(board_position)) { this.selected.push(board_position) }
+			}
+		}
+	}
 
-    on_mouse_down() {
-        this.mouse_down = true;
-    }
+	on_mouse_down () {
+		this.mouse_down = true
+	}
 
-    on_mouse_up() {
-        if (this.mouse_down) {
-            let word = "" // empty string to put the word in
+	on_mouse_up () {
+		if (this.mouse_down) {
+			let word = '' // empty string to put the word in
 
-            for (let i = 0; i < this.selected.length; i++) {
-                let index = this.selected[i];
-                let letter = this.letters[index];
+			for (let i = 0; i < this.selected.length; i++) {
+				let index = this.selected[i]
+				let letter = this.letters[index]
 
-                word += letter;
-            }
+				word += letter
+			}
 
-            $(".selected").removeClass("selected");
-            $("#last-word").text(word);
+			$('.selected').removeClass('selected')
+			$('#last-word').text(word)
 
-            this.check_word(word);
+			this.check_word(word)
 
-            this.selected = [];
-        }
+			this.selected = []
+		}
 
-        this.mouse_down = false;
-    }
+		this.mouse_down = false
+	}
 
-    update_time () {
-        let current_time = new Date();
-        let time_diff = current_time - this.begin_time; //in ms
-        // strip the ms
-        time_diff /= 1000;
+	update_time () {
+		let current_time = new Date()
+		let time_diff = current_time - this.begin_time // in ms
+		// strip the ms
+		time_diff /= 1000
 
-        if (this.time - time_diff < 10) {
-            $("#timer").text(Math.round(this.time - time_diff) + " second remaining!"); 
-            $("#timer").addClass('time-warning');
-        } else {
-            $("#timer").text(Math.round(this.time - time_diff) + " second remaining"); 
-        }
-        
-        if (time_diff > this.time) {
-            $("#timer").text(Math.round(this.time - time_diff) + " Time is up!"); 
-            
-            for (let i = 0; i < this.intervals.length; i++) {
-                clearInterval(this.intervals[i]);
-            }
-        }
-            
-    }
+		if (this.time - time_diff < 10) {
+			$('#timer').text(Math.round(this.time - time_diff) + ' second remaining!')
+			$('#timer').addClass('time-warning')
+		} else {
+			$('#timer').text(Math.round(this.time - time_diff) + ' second remaining')
+		}
+
+		if (time_diff > this.time) {
+			$('#timer').text(Math.round(this.time - time_diff) + ' Time is up!')
+
+			for (let i = 0; i < this.intervals.length; i++) {
+				this.solve()
+				clearInterval(this.intervals[i])
+			}
+		}
+	}
+
+	solve () {
+		let solved = $('#solved')
+
+		$.ajax({
+			url: url + 'board/solution/' + this.game_code,
+			crossDomain: true,
+
+			success: (data) => {
+				for (let i = 0; i < data.solved.length; i++) {
+					let solve = $('<div/>').prependTo(solved)
+					solve.addClass('alert')
+					solve.text(data.solved[i])
+				}
+			}
+		})
+
+		// this.table_body.empty()
+	}
 }
 
-const game = new Game();
-
-
-
+let game = new Game()

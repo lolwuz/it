@@ -1,0 +1,12 @@
+#begin-card {
+    margin-top: 40px;
+}
+
+#timer {
+    margin-top: 20px;
+}
+
+.danger {
+    transition: 1;
+    color: red;
+}

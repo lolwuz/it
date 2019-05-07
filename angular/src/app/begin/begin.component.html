@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div id="begin-card" class="card">
+        <div class="card-header">
+            <button type="button" class="btn btn-outline-warning btn-block" (click)="goBack()">Return</button>
+        </div>
+        <div class="card-body">
+          <h5>Game code: {{route.snapshot.params.game_code}}</h5>
+          <h6>Total points scored: {{boggleService.totalPoints}}</h6>
+          <button *ngIf="!board" class="btn btn-outline-success btn-block" (click)="onClickStart()">Start timer</button>
+        </div>
+      </div>
+
+      <div>
+        <h1 *ngIf="timeLeft < 60" id="timer" class="text-center" [class.danger]="timeLeft < 10"><b>{{ timeLeft > 0 ? timeLeft : "Game over!"}}</b></h1>
+      </div>
+    </div>
+    <div class="col-md-6">
+        <app-board *ngIf="board" [board]="board"></app-board>
+        <app-guessed></app-guessed>
+    </div>
+  </div>
+</div>

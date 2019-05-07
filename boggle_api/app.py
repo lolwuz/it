@@ -1,16 +1,15 @@
 from flask import Flask
+from flask_cors import CORS
+from werkzeug.wsgi import DispatcherMiddleware
+from jquery_app import app as jquery
+from angular_app import app as angular
+from crud import app as backend
 
-app = Flask(__name__)
-from flask_cors import CORS, cross_origin
-app.config['CORS_HEADERS'] = 'Content-Type'
+application = Flask(__name__)
 
-CORS(app)
+application.wsgi_app = DispatcherMiddleware(backend)
 
-@app.route('/')
-@cross_origin()
-def hello_world():
-    return '<h1>HOI DIT IS EEN TEST</h1>'
+CORS(application)
 
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    application.run(debug=True)

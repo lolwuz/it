@@ -1,0 +1,57 @@
+#start-card {
+  margin-top: 10%;
+  text-align: center;
+}
+
+#game-table {
+  margin-top: 40px;
+
+  height: 400px;
+  width: 400px;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+#begin-card {
+  margin-top: 40px;
+}
+
+#timer {
+  margin-top: 20px;
+}
+
+#guesses {
+  margin-top: 40px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+td {
+  align-content: center;
+}
+
+.hover {
+  background: gray;
+}
+
+.selected {
+  background: salmon;
+}
+
+.none {
+  background: transparent;
+}
+
+.table-text {
+  width: 70px;
+  height: 70px;
+  margin: 15px;
+  padding: 20px;
+  text-align: center;
+}

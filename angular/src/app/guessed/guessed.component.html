@@ -1,10 +1,12 @@
 <div id="guesses" class="row">
   <div class="col-md-6">
-    <div class="alert" *ngFor="let gues of boggleService.guessed" [ngClass]="getValidClass(gues.is_valid)">
+    <div class="alert" *ngFor="let gues of buggleService.guessed" [ngClass]="getValidClass(gues.is_valid)">
       {{gues.points}} - {{gues.word}}
     </div>
   </div>
   <div class="col-md-6">
-
+    <div class="alert alert-info" *ngFor="let x of buggleService.solved">
+      {{x}}
+    </div>
   </div>
 </div>

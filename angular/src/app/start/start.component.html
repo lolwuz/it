@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4 col-pull">
+        <div class="col-md-5 col-pull">
             <div id="start-card" class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Buggle Angular</h1>
+                </div>
                 <div class="card-body">
-                    <h1 class="card-title text-center">Boggle Angular</h1>
-
-                    <img src="https://angular.io/assets/images/logos/angular/angular.svg"/>
+                    <img id="angular-logo" class="img-fluid" src="https://angular.io/assets/images/logos/angular/angular.svg"/>
 
                     <div class="form-row align-items-center">
                         <div class="col-sm-7">
@@ -14,7 +15,7 @@
                                 placeholder="Game code">
                         </div>
                         <div class="col-sm-5">
-                            <button (click)="startCode()" class="btn btn-outline-primary btn-block">Start</button>
+                            <button [disabled]="game_code.length < 6" (click)="startCode()" class="btn btn-outline-primary btn-block">Start</button>
                         </div>
                     </div>
                 </div>

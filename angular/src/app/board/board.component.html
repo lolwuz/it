@@ -1,6 +1,6 @@
 <table id="game-table" class="table-bordered" (mouseup)="mouseUp()">
   <tbody id="game-table-body">
-    <tr *ngFor="let cells of _boardArray; let x = index;">
+    <tr *ngFor="let cells of boardArray; let x = index;">
         <td *ngFor="let c of cells; let y = index;" [ngClass]="getHoverClass(x, y)">
           <div (mouseover)="mouseEnter($event,x, y)" (mousedown)="mouseEnter($event,x, y)" class="table-text">
             {{c}}

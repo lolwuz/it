@@ -10,6 +10,9 @@ td {
     align-content: center;
 }
 
+h1 {
+    font-weight: 200;
+}
 
 .table-text {
     width: 70px;
@@ -48,6 +51,11 @@ td {
     margin-top: 20px;
     max-height: 300px;
     overflow-y: scroll;
+}
+
+#jquery-logo {
+    margin: 40px 10px;
+    text-align: center;
 }
 
 .card-margin {

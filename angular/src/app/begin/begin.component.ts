@@ -1,6 +1,6 @@
-import { Board } from './../board';
-import { BoggleService } from './../boggle.service';
-import { Component, OnInit } from '@angular/core';
+import { Board, Solution } from './../board';
+import { buggleService } from './../buggle.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,28 +12,31 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BeginComponent implements OnInit {
   board: Board;
   timeLeft: number = 60;
+  gameOver: boolean = true;
   interval;
-
-  route: ActivatedRoute;
-  boggleService: BoggleService;
-  private router: Router
-
+  
+  constructor(private route: ActivatedRoute,
+    public buggleService: buggleService,
+    private router: Router){}
+  
   ngOnInit(): void {
-    // this.getBoard();
-  }
+    if (!this.buggleService.game_code)
+      this.goBack();
+    else {
+      this.getBoard();
+    }
+   }
 
   getBoard(): void {
-    const game_code = this.route.snapshot.params.game_code;
-
-    this.boggleService.getBoard(game_code)
+    this.buggleService.getBoard(this.buggleService.game_code)
       .subscribe((board) => {
-        this.board = board
-        this.startTimer();
+        this.buggleService.board = board
       });
   }
 
   onClickStart() {
-    this.getBoard();
+    this.gameOver = false;
+    this.startTimer();
   }
 
   startTimer() {
@@ -49,7 +52,15 @@ export class BeginComponent implements OnInit {
 
   endGame() {
     clearInterval(this.interval); // Clears the timer interval
-    this.board = null; // Clear board
+    this.gameOver = true;
+    this.solveBoard();
+  }
+
+  solveBoard() {
+    this.buggleService.getBoadSolved(this.buggleService.game_code)
+      .subscribe((solution: Solution) => {
+        this.buggleService.solved = solution.solved;
+      })
   }
 
   goBack(): void {

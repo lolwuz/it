@@ -8,3 +8,8 @@ export class Gues {
   is_valid: number;
   points: number;
 }
+
+export class Solution {
+  points: number;
+  solved: string[];
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoggleService } from '../boggle.service';
+import { buggleService } from '../buggle.service';
 
 @Component({
   selector: 'app-guessed',
@@ -8,7 +8,7 @@ import { BoggleService } from '../boggle.service';
 })
 export class GuessedComponent {
 
-  boggleService: BoggleService
+  constructor(private buggleService: buggleService) {}
 
   getValidClass(validity : number) {
     switch(validity){

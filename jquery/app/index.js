@@ -4,6 +4,9 @@ import { url } from 'constants.js'
 import $ from 'jquery'
 
 class Game {
+	/**
+	 * Setup the board
+	 */
 	constructor () {
 		this.start_button = $('#start-button')
 		this.random_button = $('#random-button')

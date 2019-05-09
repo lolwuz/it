@@ -1,4 +1,5 @@
-import { BoggleService } from './../boggle.service';
+import { Solution } from './../board';
+import { buggleService } from './../buggle.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Board, Gues } from '../board';
 
@@ -9,38 +10,39 @@ import { Board, Gues } from '../board';
 })
 
 export class BoardComponent {
-  _gameCode: string;
-  _letters: string[] = [];
-  _selected: number[] = [];
-  _boardArray: any[] = [];
+  private letters: string[] = [];
+  private selected: number[] = [];
+  private lastMouseEnter: number;
 
-  _isMouseDown: boolean = false;
-  _lastMouseEnter: number;
+  public boardArray: any[] = [];
 
-  constructor(private boggleService: BoggleService) { }
+  constructor(public buggleService: buggleService) { }
 
+  @Input() gameOver: boolean;
   @Input()
   /** Set board passed down from begin.component */
   set board(board: Board) {
+    // Empty prev. board
+    this.letters = [];
+    this.selected = [];
+    this.boardArray = []
+
     const boardString = board.board;
-    this._letters = [];
 
     // Fill letters array.
     for (let i = 2; i < boardString.length; i = i + 5) {
-      this._letters.push(board.board[i])
+      this.letters.push(board.board[i])
     }
 
     // Letters in 2D array for rendering
     let cells = [];
-    for (var i = 1; i <= this._letters.length; i++) {
-      cells.push(this._letters[i - 1]);
+    for (var i = 1; i <= this.letters.length; i++) {
+      cells.push(this.letters[i - 1]);
       if ((i % 4) == 0) {
-        this._boardArray.push(cells);
+        this.boardArray.push(cells);
         cells = [];
       }
     }
-
-    this._gameCode = board.game_code;
   }
 
   /**
@@ -51,11 +53,11 @@ export class BoardComponent {
   mouseEnter(event: any, x: number, y: number) {
     const index = (x * 4) + y;
 
-    this._lastMouseEnter = index; // Last mouse enter for 'hover' class
+    this.lastMouseEnter = index; // Last mouse enter for 'hover' class
 
     // Add selected to selected list if mouse is down.
-    if (!this._selected.includes(index) && event.buttons === 1 && this.isInbound(index))
-      this._selected.push(index);
+    if (this.isInbound(index) && !this.selected.includes(index) && event.buttons === 1 )
+      this.selected.push(index);
   }
 
   /**
@@ -66,9 +68,9 @@ export class BoardComponent {
   getHoverClass(x: number, y: number) {
     const index = (x * 4) + y;
 
-    if (this._selected.includes(index))
+    if (this.selected.includes(index))
       return 'selected'
-    else if (this._lastMouseEnter === index)
+    else if (this.lastMouseEnter === index)
       return 'hover'
     else
       return 'none'
@@ -79,26 +81,48 @@ export class BoardComponent {
    * @param boardPosition index of last board position
    */
   isInbound(boardPosition) {
-    if (this._selected.length < 1) { return true }
+    if (this.selected.length < 1) { return true }
 
-    let last_position = this._selected[this._selected.length - 1]
+    let lastPosition = this.selected[this.selected.length - 1];
+    let index2D = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]];
 
-    if (Math.abs(boardPosition - last_position) < 6) { return true } else { return false }
+    let adj = [];
+    for (let x = 0; x < 4; x++) {
+      for (let y = 0; y < 4; y++) {
+        if (index2D[x][y] === boardPosition) {
+          for (let c = -1; c <= 1; c++) {
+            for (let j = -1; j <= 1; j++) {
+              let xc = x + c
+              let yj = y + j
+              if (xc >= 0 && xc <= 3 && yj >= 0 && yj <= 3) 
+                adj.push(index2D[xc][yj]);
+            }
+          }
+        }
+      }
+    }
+    
+    if (adj.includes(lastPosition)){  return true } else { return false }
   }
 
   /**
-   * Checks if word is correct after 
+   * Checks if word is correct after mouseUp
    */
   mouseUp() {
+    if (this.gameOver) {
+      this.selected = []
+      return // Game ended
+    }
+
     let word: string = ''
 
-    for (let i: number = 0; i < this._selected.length; i++) {
-      let index = this._selected[i]
-      word += this._letters[index] // Append letter to string
+    for (let i: number = 0; i < this.selected.length; i++) {
+      let index = this.selected[i]
+      word += this.letters[index] // Append letter to string
     }
 
     if (word.length > 2) {
-      this.boggleService.getBoadCheck(this._gameCode, word)
+      this.buggleService.getBoadCheck(this.buggleService.game_code, word)
         .subscribe((gues) => {
           let new_gues: Gues = new Gues()
           new_gues.word = word;
@@ -106,17 +130,17 @@ export class BoardComponent {
 
           // Check if valid gues. 2 == already guesed.
           new_gues.is_valid = gues.is_valid ? 1 : 0
-          for (let i = 0; i < this.boggleService.guessed.length; i++) {
-            if (this.boggleService.guessed[i].word === word)
+          for (let i = 0; i < this.buggleService.guessed.length; i++) {
+            if (this.buggleService.guessed[i].word === word)
               new_gues.is_valid = 2;
           }
 
-          // Ad gues to boggleService
-          this.boggleService.guessed.unshift(new_gues);
-          this.boggleService.totalPoints += gues.points; 
+          // Ad gues to buggleService
+          this.buggleService.guessed.unshift(new_gues);
+          this.buggleService.totalPoints += gues.points;
         });
     }
 
-    this._selected = [];
+    this.selected = [];
   }
 }

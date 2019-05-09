@@ -1,15 +1,3 @@
-html {
-    box-sizing: border-box;
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-td {
-    align-content: center;
-}
-
 
 .table-text {
     width: 70px;

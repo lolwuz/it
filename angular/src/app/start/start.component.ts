@@ -1,6 +1,6 @@
 import { Board } from './../board';
-import { BoggleService } from './../boggle.service';
-import { Component,  Input } from '@angular/core';
+import { buggleService } from './../buggle.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,24 +8,41 @@ import { Router } from '@angular/router';
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.css']
 })
-export class StartComponent {
+export class StartComponent implements OnInit {
 
   @Input() game_code: string;
 
-  constructor(private BoggleService: BoggleService, private router: Router) { }
+  constructor(public buggleService: buggleService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.game_code = this.buggleService.game_code;
+  }
 
   onKey(event: any) { // without type info
-    this.game_code = event.target.value
+    this.buggleService.game_code = event.target.value
+    this.game_code = this.buggleService.game_code;
   }
 
-  startCode () {
-    this.router.navigateByUrl(`/begin/${this.game_code}`)
+  /** Start a game with an existing game code */
+  startCode() {
+    this.resetOldGame();
+    this.router.navigateByUrl(`/begin/${this.buggleService.game_code}`)
   }
 
-  startRandom () {
-    this.BoggleService.postBoard()
+  /** POST a new game to the API */
+  startRandom() {
+    this.resetOldGame();
+    
+    this.buggleService.postBoard()
       .subscribe(board => {
+        this.buggleService.game_code = board.game_code;
         this.router.navigateByUrl(`/begin/${board.game_code}`);
       });
+  }
+
+  /** Reset of prev. guessed and solved words */
+  resetOldGame() {
+    this.buggleService.solved = [];
+    this.buggleService.guessed = [];
   }
 }

@@ -1,3 +1,13 @@
 #start-card {
-    margin-top: 30%;
+    margin-top: 10%;
+    text-align: center;
+}
+
+
+#angular-logo {
+    width: 300px;
+}
+
+h1 {
+    font-weight: 200;
 }

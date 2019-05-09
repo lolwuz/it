@@ -10,7 +10,7 @@ import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
 
 const client = axios.create({
-  baseURL: 'https://lolwuz.pythonanywhere.com/api/',
+  baseURL: 'http://localhost:5000/api/',
   responseType: 'json'
 })
 

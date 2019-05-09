@@ -123,9 +123,9 @@ def on_join(data):
     # If game is already started emit
     if game.started:
         game.set_player_ready(request.sid, True)
-        emit('game_start', json.dumps(game.board), room=room)
+        emit('lobby_start', json.dumps(game.board), room=room)
 
-    emit('game_update', json.dumps(game.players), room=room)
+    emit('lobby_update', json.dumps(game.players), room=room)
 
 
 @socketio.on('leave')
@@ -137,7 +137,7 @@ def on_leave(data):
     game = ROOMS[room]
     game.remove_player(request.sid)
 
-    emit('game_update', json.dumps(game.players), room=room)
+    emit('lobby_update', json.dumps(game.players), room=room)
 
 
 @socketio.on('disconnect')
@@ -147,7 +147,7 @@ def on_disconnect():
         for player in game.players:
             if player['player_id'] == request.sid:
                 game.remove_player(request.sid)
-                emit('game_update', json.dumps(game.players), room=game.game_code)
+                emit('lobby_update', json.dumps(game.players), room=game.game_code)
 
 
 @socketio.on('ready')
@@ -160,17 +160,18 @@ def on_word(data):
     game.set_player_ready(request.sid, is_ready)
 
     if game.started:
-        emit('game_update', json.dumps(game.players), room=room)
-        emit('game_start', json.dumps(game.board), room=room)
+        emit('lobby_update', json.dumps(game.players), room=room)
+        emit('lobby_start', json.dumps(game.board), room=room)
     else:
-        emit('game_update', json.dumps(game.players), room=game.game_code)
+        emit('lobby_update', json.dumps(game.players), room=game.game_code)
 
 
 @socketio.on('check_word')
 def on_word(data):
     room = data['room']
     word = data['word']
-
     game = ROOMS[room]
 
-    emit('game_change', game.stats(), room=room)
+    game.new_word(word, request.sid)
+
+    emit('game_update', json.dumps(game.guessed), room=room)

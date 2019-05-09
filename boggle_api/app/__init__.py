@@ -12,13 +12,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'crud.sqlite')
 
 db = SQLAlchemy(app)
-
 ma = Marshmallow(app)
+
 
 CORS(app, resources={r"/*": {"Access-Control-Allow-Origin": "*"}})
 
 socketio = SocketIO(app)
-
 
 
 from routes import board_routes

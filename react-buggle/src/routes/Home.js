@@ -41,8 +41,7 @@ class Home extends Component {
                             <div className="card-body">
                                 <img alt="react-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png" className="img-fluid" />
                              
-                                <label className="sr-only" htmlFor="inlineFormInputName">Name</label>
-                                <input value={this.state.game_code} onChange={this.handleChange} type="text" className="form-control" id="inlineFormInputName"
+                                <input value={this.state.game_code} onChange={this.handleChange} type="text" className="form-control" id="game_code"
                                     placeholder="Game code" />
                                   
                             </div>

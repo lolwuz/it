@@ -2,40 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f09546e9-b1c2-42d8-8254-198eed9ccb45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/lolwuz.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/begin/begin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/begin/begin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/begin/begin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/begin/begin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/board.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/board/board.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/board/board.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/board/board.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/board/board.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/boggle.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/guessed/guessed.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/guessed/guessed.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/guessed/guessed.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/guessed/guessed.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/start/start.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/start/start.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/start/start.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/start/start.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../angular/src/app/start/start.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../angular/src/app/start/start.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/3rdpartylicenses.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/es2015-polyfills.1e04665e16f944715fd2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/main.025c84b46181620d71e7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/polyfills.8bbb231b43165d65d357.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/runtime.26209474bfa8dc87a77c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular/static/styles.3ff695c00d717f2d2a11.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/Boggle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/angular_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/angular_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery/static/bundle.47d42d1ea82607394741.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery/static/bundle.47d42d1ea82607394741.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery/static/vendor.49711a87bdcefe6e4bda.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery/static/vendor.49711a87bdcefe6e4bda.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/board_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/board_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jquery/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../jquery/app/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jquery/assets/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../jquery/assets/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jquery/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/../jquery/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557410483632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557419340119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1557219974491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$crud_py.coverage" NAME="crud_py Coverage Results" MODIFIED="1556805512714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$boggle_api.coverage" NAME="boggle_api Coverage Results" MODIFIED="1538471747966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -143,12 +114,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="13892" />
+          <entry key="py" value="14826" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="13892" />
+          <entry key="Python" value="14826" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -156,7 +127,7 @@
           <entry key="css" value="2" />
           <entry key="html" value="4" />
           <entry key="lst" value="1" />
-          <entry key="py" value="26" />
+          <entry key="py" value="28" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
@@ -165,7 +136,7 @@
           <entry key="CSS" value="2" />
           <entry key="HTML" value="4" />
           <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="26" />
+          <entry key="Python" value="28" />
         </counts>
       </usages-collector>
     </session>
@@ -175,8 +146,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+            <state>
+              <caret column="26" lean-forward="true" selection-start-column="26" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-134">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -184,13 +167,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+            <state relative-caret-position="433">
+              <caret line="131" column="19" selection-start-line="131" selection-start-column="19" selection-end-line="131" selection-end-column="19" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1557410510175" expanded="true" signature="2634:2635" ph="..." />
-                <marker date="1557410510175" expanded="true" signature="2691:3099" ph="..." />
-                <marker date="1557410510175" expanded="true" signature="3493:3498" ph="..." />
+                <marker date="1557419024159" expanded="true" signature="2660:2661" ph="..." />
               </folding>
             </state>
           </provider>
@@ -208,8 +189,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>boards_schema</find>
-      <find>boards_schem</find>
       <find>create_all</find>
       <find>string</find>
       <find>Board()</find>
@@ -238,6 +217,8 @@
       <find>game_code</find>
       <find>rooms</find>
       <find>keys</find>
+      <find>name</find>
+      <find>ready</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -259,6 +240,7 @@
         <option value="$PROJECT_DIR$/app/Boggle.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/app/Game.py" />
         <option value="$PROJECT_DIR$/routes/board_routes.py" />
       </list>
     </option>
@@ -291,12 +273,12 @@
             <path>
               <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -436,7 +418,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20171674" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14878398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" weight="0.32891566" />
@@ -555,13 +537,6 @@
     <entry file="file://$PROJECT_DIR$/constant/lower.lst">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/constant/word_points.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -678,22 +653,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        <state>
+          <caret column="26" lean-forward="true" selection-start-column="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="145" column="21" selection-start-line="145" selection-start-column="21" selection-end-line="145" selection-end-column="21" />
+        <state relative-caret-position="433">
+          <caret line="131" column="19" selection-start-line="131" selection-start-column="19" selection-end-line="131" selection-end-column="19" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1557410510175" expanded="true" signature="2634:2635" ph="..." />
-            <marker date="1557410510175" expanded="true" signature="2691:3099" ph="..." />
-            <marker date="1557410510175" expanded="true" signature="3493:3498" ph="..." />
+            <marker date="1557419024159" expanded="true" signature="2660:2661" ph="..." />
           </folding>
         </state>
       </provider>

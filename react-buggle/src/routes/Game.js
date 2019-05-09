@@ -13,19 +13,31 @@ const joinRoom = (room, username) => {
    };
 };
 
+const ready = (room, is_ready) => {
+    return {
+        room,
+        is_ready
+   };
+};
+
 class Game extends Component {
     state = {
         letters: [],
         selected: [],
         boardArray: [],
         return: false,
-        timeLeft: 60
+        timeLeft: 60,
+        name: '',
+
+        players: [],
+        multiplayerStarted: false,
+        gameStarted: false
     }
 
     componentDidMount() {
+        const boardString = this.props.board.board.board
         if (this.props.board.board.game_code.length > 0) {
-            this.makeBoard()
-            this.startMultiplayer();
+            // this.makeBoard(boardString)
         } else {
             this.goBack()
         }
@@ -35,24 +47,46 @@ class Game extends Component {
         this.ws = null
     }
 
+    handleChange = (event) => {
+        let name = event.target.value;
+        this.setState({ name: name });
+    }
 
     startMultiplayer = () => {
         let room = this.props.board.board.game_code;
-        let name = "HENKIE"
+        let name = this.state.name
 
-        const socket = io('http://localhost:5000');
+        this.socket = io('http://localhost:5000');
 
-        socket.on('connect', () => {
+        this.socket.on('connect', () => {
             console.log('connected: emitting room')
-            socket.emit('join', joinRoom(room, name))
+            this.socket.emit('join', joinRoom(room, name))
         });
 
-        socket.on('game_update', function(data){
+        this.socket.on('game_update', (data) => {
+            console.log(JSON.parse(data))
+            this.setState({
+                players: JSON.parse(data),
+                multiplayerStarted: true
+            })
+        });
+
+        this.socket.on('game_start', (data) => {
             console.log(data)
+            this.setState({
+                gameStarted: true
+            })
+
+            this.makeBoard(data)
         });
 
-        socket.on('disconnect', function(){});
+        this.socket.on('disconnect', () => {
+            console.log('disconnected from the server')
+        });
+    }
 
+    readyClick = () => {
+        this.socket.emit('ready', ready(this.props.board.board.game_code, true))
     }
 
     /** Returns to route home and deletes board */
@@ -64,9 +98,8 @@ class Game extends Component {
     }
 
     /** Convert the board string to a workable 2D array */
-    makeBoard() {
+    makeBoard = (boardString) => {
         const { board } = this.props.board
-        const boardString = board.board
 
         let letters = []
         let boardArray = []
@@ -214,7 +247,7 @@ class Game extends Component {
     }
 
     render() {
-        const { boardArray } = this.state
+        const { boardArray, players, multiplayerStarted, name } = this.state
         const { board, check } = this.props
 
         const renderBoard = boardArray.map((cells, x) =>
@@ -225,7 +258,13 @@ class Game extends Component {
                     )
                 }
             </tr>
-        );
+        )
+
+        const renderPlayers = players.map((player) => 
+            <div key={player.player_id} className={player.is_ready ? 'alert alert-success' : 'alert alert-danger'}>
+                { player.name } 
+            </div>
+        )
 
         // Redirect if no board is loaded
         if (!this.props.board.board || this.state.return) {
@@ -236,7 +275,7 @@ class Game extends Component {
             <div className="container" onMouseUp={this.mouseUp}>
                 <div className="row">
                     <div className="col-md-5">
-                        <div id="begin-card" className="card">
+                        <div className="card begin-card">
                             <div className="card-header">
                                 <Link to="/">
                                     <button type="button" className="btn btn-outline-warning btn-block" onClick={this.goBack}>Return</button>
@@ -249,6 +288,16 @@ class Game extends Component {
                             </div>
                         </div>
 
+                        <div className="card begin-card">
+                            <div className="card-body">
+                                { (this.state.name.length > 3 && !multiplayerStarted) && <button className="btn btn-outline-success btn-block" onClick={this.startMultiplayer}>Enter multiplayer</button> } {" - "} { name }
+                                { !multiplayerStarted && <input value={this.state.name} onChange={this.handleChange} type="text" className="form-control" id="inlineFormInputName"
+                                placeholder="Name" /> }
+
+                                { multiplayerStarted && <button className="btn btn-sm btn-outline-success" onClick={this.readyClick}>Ready</button>}
+                                { renderPlayers } 
+                            </div>
+                        </div>
                         <div>
                             <h1 id="timer" className="text-center">{this.state.timeLeft > 0 ? this.state.timeLeft : "Game over!"}</h1>
                         </div>
@@ -257,7 +306,7 @@ class Game extends Component {
                     <div className="col-md-7">
                         <table id="game-table" className="table-bordered">
                             <tbody id="game-table-body">
-                                {this.state.timeLeft < 60 && renderBoard}
+                                { renderBoard }
                             </tbody>
                         </table>
                         <Guesses />

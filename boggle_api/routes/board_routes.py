@@ -6,6 +6,7 @@ from random import shuffle, randint
 from flask import jsonify, request
 from app import app, db, socketio
 from app.Boggle import Boggle
+from app.Game import Game
 from constant import dice_dict, word_points
 from models.board import Board, BoardSchema
 from flask_cors import cross_origin
@@ -100,43 +101,8 @@ def get_solution(game_code):
     return jsonify({'solved': list(b.find_words()), 'points': b.score()})
 
 
-ROOMS = {} # dict to track active rooms
-
-
-class Game:
-    def __init__(self, game_code):
-        self.game_code = game_code
-        self.players = []
-        self.words = self.get_words()
-
-    def get_words(self):
-        board = Board.query.filter_by(game_code=self.game_code).first()
-
-        # letters on the board
-        letters = ast.literal_eval(board.board)
-        letters = ''.join(letters)
-
-        b.set_board(letters)
-
-        return b.find_words()
-
-    def is_in_words(self, word):
-        if word in self.words:
-            return True
-
-        return False
-
-    def add_player(self, name, player_id):
-        self.players.append({'name': name, 'player_id': player_id})
-
-    def remove_player(self, player_id):
-
-        for player in self.players:
-            if player['player_id'] == player_id:
-                self.players.remove(player)
-
-    def to_json(self):
-        return json.dumps(list(self.words))
+""" SOCKET FUNCTIONS """
+ROOMS = {}  # dict to track active rooms
 
 
 @socketio.on('join')
@@ -153,6 +119,12 @@ def on_join(data):
     game.add_player(name, request.sid)
 
     join_room(room)
+
+    # If game is already started emit
+    if game.started:
+        game.set_player_ready(request.sid, True)
+        emit('game_start', json.dumps(game.board), room=room)
+
     emit('game_update', json.dumps(game.players), room=room)
 
 
@@ -178,12 +150,27 @@ def on_disconnect():
                 emit('game_update', json.dumps(game.players), room=game.game_code)
 
 
+@socketio.on('ready')
+def on_word(data):
+    is_ready = data['is_ready']
+    room = data['room']
+
+    game = ROOMS[room]
+
+    game.set_player_ready(request.sid, is_ready)
+
+    if game.started:
+        emit('game_update', json.dumps(game.players), room=room)
+        emit('game_start', json.dumps(game.board), room=room)
+    else:
+        emit('game_update', json.dumps(game.players), room=game.game_code)
+
+
 @socketio.on('check_word')
 def on_word(data):
     room = data['room']
     word = data['word']
 
     game = ROOMS[room]
-    game.is_in_words(word)
 
     emit('game_change', game.stats(), room=room)

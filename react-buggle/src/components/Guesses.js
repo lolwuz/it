@@ -25,7 +25,7 @@ class Guesses extends Component {
                         'alert ' + this.getClass(guess.player_id, guess.points)
                     }
                 >
-                    {guess.word + '  (' + name + ')'}
+                    {guess.points + " - " + guess.word + '  (' + name + ')'}
                 </div>
             )
         })

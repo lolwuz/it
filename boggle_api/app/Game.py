@@ -1,4 +1,5 @@
 import ast
+import datetime
 import json
 
 from app.Boggle import Boggle
@@ -10,12 +11,18 @@ b = Boggle("constant/TWL06.txt")
 
 class Game:
     def __init__(self, game_code):
-        self.game_code = game_code
+        # live game data
         self.started = False
+        self.game_over = False
+        self.cursors = []
+        # static game data
+        self.game_code = game_code
         self.players = []
         self.words = []
         self.board = ''
         self.guessed = []
+        self.start_time = None
+        self.end_time = None
 
         self.get_words()
 
@@ -31,6 +38,8 @@ class Game:
 
         self.board = board.board
         self.words = b.find_words()
+
+    """--------------------------------------- Game functions ----------------------------------------"""
 
     def new_word(self, word, player_id):
         """ Player guessed a new word """
@@ -48,6 +57,33 @@ class Game:
             return word_points.points[str(len(word))]
         if word_length >= 8:
             return 11
+
+    def start_game(self):
+        self.start_time = datetime.datetime.now() + datetime.timedelta(seconds=3)
+        self.end_time = datetime.datetime.now() + datetime.timedelta(seconds=63)
+
+    def get_game_loop(self):
+        remaining_second = 0
+        if self.started and not self.game_over:
+            delta_time = self.end_time - datetime.datetime.now()
+            remaining_second = delta_time.seconds
+
+            if remaining_second == 0:
+                self.game_over = True
+
+        print(self.cursors)
+        return {'time': remaining_second, 'status': self.game_over, 'cursors': self.cursors}
+
+    def set_cursor(self, player_id, index):
+        for cursor in self.cursors:
+            if cursor['player_id'] == player_id:
+                cursor['cursor'] = index
+                return  # Cursor is already in list
+
+        # If player_id cursor doesn't exist add to list.
+        self.cursors.append({'player_id': player_id, 'cursor': index})
+
+    """--------------------------------------- Lobby functions ----------------------------------------"""
 
     def add_player(self, name, player_id):
         """ Adds a new player (sid) to the game """
@@ -69,6 +105,9 @@ class Game:
         for player in self.players:
             if not player['is_ready']:
                 ready = False
+
+        if ready and not self.started:
+            self.start_game()
 
         self.started = ready
 

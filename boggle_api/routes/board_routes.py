@@ -126,6 +126,7 @@ def on_join(data):
         emit('lobby_start', json.dumps(game.board), room=room)
 
     emit('lobby_update', json.dumps(game.players), room=room)
+    emit('lobby_id', request.sid)
 
 
 @socketio.on('leave')
@@ -175,3 +176,14 @@ def on_word(data):
     game.new_word(word, request.sid)
 
     emit('game_update', json.dumps(game.guessed), room=room)
+
+
+@socketio.on('game_loop')
+def on_message(data):
+    room = data['room']
+    index = data['cursor']
+
+    game = ROOMS[room]
+    game.set_cursor(request.sid, index)
+
+    emit('game_loop', json.dumps(game.get_game_loop()))

@@ -27,6 +27,13 @@ const wordCheck = (room, word) => {
     }
 }
 
+const gameLoop = (room, cursor) => {
+    return { 
+        room, 
+        cursor
+    } 
+}
+
 class Game extends Component {
     state = {
         letters: [],
@@ -35,15 +42,19 @@ class Game extends Component {
         return: false,
         timeLeft: 60,
         name: '',
+        playerId: '',
 
         players: [],
         guessed: [],
+        cursors: [],
+        lastPosition: 0,
         multiplayerStarted: false,
         gameStarted: false, 
     }
 
     componentWillUnmount() {
         this.io = null
+        clearInterval(this.interval);
     }
 
     handleChange = event => {
@@ -51,19 +62,33 @@ class Game extends Component {
         this.setState({ name: name })
     }
 
+     /** Returns to route home and deletes board */
+     goBack = () => {
+
+        if (this.socket)
+            this.socket.disconnect()
+
+        this.setState({
+            return: true
+        })
+    }
+
+    readyClick = () => {
+        this.socket.emit('ready', ready(this.props.board.board.game_code, true))
+    }
+
     startMultiplayer = () => {
         let room = this.props.board.board.game_code
         let name = this.state.name
 
-        this.socket = io('http://localhost:5000')
+        this.socket = io('141.252.234.193:5000/')
 
         this.socket.on('connect', () => {
-            console.log('connected: emitting room')
+            console.log('connected to the server')
             this.socket.emit('join', joinRoom(room, name))
         })
 
         this.socket.on('lobby_update', data => {
-            console.log(JSON.parse(data))
             this.setState({
                 players: JSON.parse(data),
                 multiplayerStarted: true
@@ -71,12 +96,18 @@ class Game extends Component {
         })
 
         this.socket.on('lobby_start', data => {
-            console.log(data)
             this.setState({
                 gameStarted: true
             })
-
+            
+            this.interval = setInterval(() => {this.gameLoop()}, 83);
             this.makeBoard(data)
+        })
+
+        this.socket.on('lobby_id', data => {
+            this.setState({
+                playerId: data
+            })
         })
 
         this.socket.on('game_update', data => {
@@ -85,8 +116,12 @@ class Game extends Component {
             })
         })
 
-        this.socket.on('check_word', data => {
-            console.log(data)
+        this.socket.on('game_loop', data => {
+            const parsed_data = JSON.parse(data)
+            this.setState({
+                timeLeft: parsed_data.time,
+                cursors: parsed_data.cursors
+            })
         })
 
         this.socket.on('disconnect', () => {
@@ -94,20 +129,12 @@ class Game extends Component {
         })
     }
 
-    readyClick = () => {
-        this.socket.emit('ready', ready(this.props.board.board.game_code, true))
-    }
-
     multiPlayerWord = (word) => {
         this.socket.emit('check_word', wordCheck(this.props.board.board.game_code, word))
     }
 
-    /** Returns to route home and deletes board */
-    goBack = () => {
-        this.socket.disconnect()
-        this.setState({
-            return: true
-        })
+    gameLoop = () => {
+        this.socket.emit('game_loop', gameLoop(this.props.board.board.game_code, this.state.selected))
     }
 
     /** Convert the board string to a workable 2D array */
@@ -159,19 +186,35 @@ class Game extends Component {
     }
 
     /** Gets the class of the td (for hover/selected effect) */
-    getTdClass = (x, y) => {
+    getTdClass = (x, y, cursors, playerId) => {
         let index = x * 4 + y
 
+        let className = 'empty'
         // if in selected list return selected class
-        if (this.state.selected.includes(index)) return 'selected'
+        if (this.state.selected.includes(index)) {
+            className = 'selected'
+        }
 
         // if last hovered
         if (this.state.lastPosition === index) {
-            return 'hover'
+            className = 'hover'
+        }
+
+        for (let i = 0; i < cursors.length; i++) {
+            const indexes = cursors[i].cursor;
+
+            if (cursors[i].player_id !== playerId) {
+                for (let y = 0; y < indexes.length; y++) {
+                    if (indexes[y] === index ) {
+                        
+                            className = className + '-enemy'
+                    }
+                }
+            }
         }
 
         // Return no class
-        return ''
+        return className 
     }
 
     /**
@@ -243,7 +286,7 @@ class Game extends Component {
     }
 
     render() {
-        const { boardArray, players, multiplayerStarted, name, guessed } = this.state
+        const { boardArray, players, multiplayerStarted, name, guessed, cursors, playerId } = this.state
         const { board, check } = this.props
 
         let readyPlayers = 0
@@ -254,7 +297,7 @@ class Game extends Component {
         const renderBoard = boardArray.map((cells, x) => (
             <tr key={x}>
                 {cells.map((cell, y) => (
-                    <td key={y} className={this.getTdClass(x, y)}>
+                    <td key={y} className={this.getTdClass(x, y, cursors, playerId)}>
                         <div
                             className="table-text"
                             onMouseMove={e => this.onHover(e, x, y)}
@@ -281,7 +324,7 @@ class Game extends Component {
         
         // Redirect to home
         if (this.state.return) 
-            return (<Redirect to="./"/>)
+            return (<Redirect to="/"/>)
 
         return (
             <div className="container" onMouseUp={this.mouseUp}>

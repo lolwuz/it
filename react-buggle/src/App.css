@@ -37,11 +37,23 @@ td {
 }
 
 .hover {
-  background: gray;
+  background: rgb(128, 128, 128);
 }
 
 .selected {
-  background: salmon;
+  background: rgb(106, 90, 205);
+}
+
+.hover-enemy  {
+  background: rgb(128, 108, 108)
+}
+
+.selected-enemy {
+  background: rgb(106, 70, 185)
+}
+
+.empty-enemy {
+  background: rgb(255, 235, 235)
 }
 
 .none {

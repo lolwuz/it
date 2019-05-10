@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f09546e9-b1c2-42d8-8254-198eed9ccb45" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/24777ae9-1de5-44f3-813f-86d34ac0cae8/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6d67743b-abab-421e-8923-99ae7f63fb49/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crud.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/board_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/board_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-buggle/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/components/Guesses.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/components/Guesses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/store.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557419340119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557496295638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1557219974491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$crud_py.coverage" NAME="crud_py Coverage Results" MODIFIED="1556805512714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$boggle_api.coverage" NAME="boggle_api Coverage Results" MODIFIED="1538471747966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -37,60 +34,82 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="crud.sqlite" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="crud.sqlite" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="crud.sqlite" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-766196940">
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="1593" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="1593" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Game.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="125">
-                  <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-                  <folding>
-                    <element signature="e#0#10#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="78">
-                  <caret line="148" column="47" lean-forward="true" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
-                  <folding>
-                    <element signature="e#0#11#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="431" column="8" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+              <folding>
+                <marker date="1557497842280" expanded="true" signature="1698:1867" ph="..." />
+                <marker date="1557497842280" expanded="true" signature="1920:2748" ph="..." />
+                <marker date="1557497842280" expanded="true" signature="2327:2640" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="597">
+              <caret line="175" column="36" lean-forward="true" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <marker date="1557497677915" expanded="true" signature="2660:2661" ph="..." />
+                <marker date="1557497677915" expanded="true" signature="4530:4531" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -102,8 +121,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>string</find>
-      <find>Board()</find>
       <find>Board</find>
       <find>mam</find>
       <find>user_id</find>
@@ -130,8 +147,10 @@
       <find>rooms</find>
       <find>keys</find>
       <find>name</find>
-      <find>ready</find>
       <find>game_update</find>
+      <find>ready</find>
+      <find>se</find>
+      <find>cursor</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,12 +170,18 @@
         <option value="$PROJECT_DIR$/angular_app.py" />
         <option value="$PROJECT_DIR$/routes/crossdomain.py" />
         <option value="$PROJECT_DIR$/app/Boggle.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/routes/board_routes.py" />
         <option value="$PROJECT_DIR$/app/Game.py" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="730" />
@@ -177,16 +202,6 @@
               <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
-              <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -203,17 +218,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/angular" />
-      <recent name="$PROJECT_DIR$/angular/static" />
-      <recent name="$PROJECT_DIR$/constant" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\lolwuz\Documents\GitHub\it\boggle_api\app" />
       <recent name="$PROJECT_DIR$/angular/static" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/angular" />
       <recent name="$PROJECT_DIR$/jquery/static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/angular" />
+      <recent name="$PROJECT_DIR$/angular/static" />
+      <recent name="$PROJECT_DIR$/constant" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -328,15 +343,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06609808" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16801292" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.22643554" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.2109589" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,7 +359,7 @@
       <window_info anchor="bottom" id="Database Console" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" weight="0.32891566" />
+      <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32891566" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.2665222" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50143063" side_tool="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.49928468" weight="0.32891566" />
@@ -353,7 +368,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.18496802" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18416801" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24034335" />
@@ -462,11 +477,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py" />
     <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/socketio/base_manager.py" />
     <entry file="das://2f71c966-6f1e-4ef7-b55c-f11697cf942f/schema/main/table/board">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="f174a0a4-f4f0-48f7-8b93-ed226a2ce09e">
+        <state>
           <filtering>
             <filter text="" />
           </filtering>
@@ -475,16 +489,14 @@
     </entry>
     <entry file="das://c18dc2ea-e94a-4bd7-be15-90bef22d22d6/schema/main/table/board">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="f174a0a4-f4f0-48f7-8b93-ed226a2ce09e">
+        <state>
           <filtering>
             <filter text="" />
           </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8edc2ebd-9c28-462c-8bff-c608671469dd/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8edc2ebd-9c28-462c-8bff-c608671469dd/console.sql" />
     <entry file="file://$PROJECT_DIR$/models/board.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -492,9 +504,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/999e2955-8d46-4249-bcb4-133df763751c/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/999e2955-8d46-4249-bcb4-133df763751c/console.sql" />
     <entry file="file://$PROJECT_DIR$/crud.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -502,25 +512,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c1a200e8-b515-48b7-b865-26686e71ee0f/schema/main/table/board">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="f174a0a4-f4f0-48f7-8b93-ed226a2ce09e">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1a200e8-b515-48b7-b865-26686e71ee0f/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="das://c1a200e8-b515-48b7-b865-26686e71ee0f/schema/main/table/board" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1a200e8-b515-48b7-b865-26686e71ee0f/console.sql" />
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -531,22 +524,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Game.py">
+    <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <caret line="431" column="8" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="148" column="47" lean-forward="true" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
+        <state relative-caret-position="597">
+          <caret line="175" column="36" lean-forward="true" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+            <marker date="1557497677915" expanded="true" signature="2660:2661" ph="..." />
+            <marker date="1557497677915" expanded="true" signature="4530:4531" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+          <folding>
+            <marker date="1557497842280" expanded="true" signature="1698:1867" ph="..." />
+            <marker date="1557497842280" expanded="true" signature="1920:2748" ph="..." />
+            <marker date="1557497842280" expanded="true" signature="2327:2640" ph="..." />
           </folding>
         </state>
       </provider>

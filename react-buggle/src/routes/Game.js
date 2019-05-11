@@ -81,7 +81,7 @@ class Game extends Component {
         let room = this.props.board.board.game_code
         let name = this.state.name
 
-        this.socket = io('141.252.234.193:5000/')
+        this.socket = io('localhost:5000/')
 
         this.socket.on('connect', () => {
             console.log('connected to the server')
@@ -275,11 +275,10 @@ class Game extends Component {
             let index = selected[i]
             word += letters[index] // Append letter to string
         }
-
-        if (word.length > 2) {
+      
+        if(word.length > 1)
             this.multiPlayerWord(word)
-        }
-
+        
         this.setState({
             selected: []
         })
@@ -400,11 +399,11 @@ class Game extends Component {
                             id="game-table"
                             className="table-bordered"
                         >
-                            <tbody id="game-table-body">
+                            <tbody id="game-table-body" className="card">
                                 {renderBoard}
                             </tbody>
                         </table>
-                        <Guesses guessed={guessed} players={players}/>
+                        <Guesses guessed={guessed} players={players} playerId={playerId}/>
                     </div>
                 </div>
             </div>

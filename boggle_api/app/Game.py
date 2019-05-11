@@ -43,8 +43,7 @@ class Game:
 
     def new_word(self, word, player_id):
         """ Player guessed a new word """
-        if word in self.words:
-            self.guessed = [({'word': word, 'player_id': player_id, 'points': self.get_points(word)})] + self.guessed
+        self.guessed = [({'word': word, 'player_id': player_id, 'points': self.get_points(word)})] + self.guessed
 
     def get_points(self, word):
         """ Get the correct points for a word """
@@ -52,11 +51,16 @@ class Game:
             if guess['word'] == word:
                 return 0  # Return 0 points when word is already guessed
 
+        if word not in self.words:
+            return 0
+
         word_length = len(word)
         if 3 <= word_length <= 8:
             return word_points.points[str(len(word))]
         if word_length >= 8:
             return 11
+
+        return 0
 
     def start_game(self):
         self.start_time = datetime.datetime.now() + datetime.timedelta(seconds=3)
@@ -71,7 +75,6 @@ class Game:
             if remaining_second == 0:
                 self.game_over = True
 
-        print(self.cursors)
         return {'time': remaining_second, 'status': self.game_over, 'cursors': self.cursors}
 
     def set_cursor(self, player_id, index):

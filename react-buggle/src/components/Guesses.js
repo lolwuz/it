@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Guesses extends Component {
-    getClass = (player_id, points) => {}
+    getClass = (guessed, player_id, points) => {
+        if (points === 0) {
+            return 'list-group-item-danger'
+        } else {
+            return 'list-group-item-success'
+        }
+    }
 
     render() {
-        const { players } = this.props
+        const { players, guessed, playerId } = this.props
 
-        console.log(players)
-        console.log(this.props.guessed)
-
-        let guesses = this.props.guessed.map((guess, index) => {
-            let name = 'deceased'
+        let renderGuesses = guessed.map((guess, index) => {
+            let name = 'unnamed'
             for (let i = 0; i < players.length; i++) {
                 if (players[i].player_id === guess.player_id) {
                     name = players[i].name
@@ -19,21 +22,57 @@ class Guesses extends Component {
             }
 
             return (
-                <div
+                <li
                     key={index}
                     className={
-                        'alert ' + this.getClass(guess.player_id, guess.points)
+                        'list-group-item ' +
+                        this.getClass(guessed, guess.player_id, guess.points)
                     }
                 >
-                    {guess.points + " - " + guess.word + '  (' + name + ')'}
-                </div>
+                    {guess.points + ' - ' + guess.word + '  (' + name + ')'}
+                </li>
             )
+        })
+
+        let renderMyGuesses = guessed.map((guess, index) => {
+            let name = 'unnamed'
+            for (let i = 0; i < players.length; i++) {
+                if (players[i].player_id === guess.player_id) {
+                    name = players[i].name
+                }
+            }
+
+            if (guess.player_id === playerId) {
+                return (
+                    <li
+                        key={index}
+                        className={
+                            'list-group-item ' +
+                            this.getClass(guessed, guess.player_id, guess.points)
+                        }
+                    >
+                        {guess.points + ' - ' + guess.word + '  (' + name + ')'}
+                    </li>
+                ) 
+            } else return (null)
+        
         })
 
         return (
             <div>
-                <div id="guesses" className="row">
-                    <div className="col-md-6">{guesses}</div>
+                <div id="guesses">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <ul className="list-group">
+                                {renderMyGuesses}
+                            </ul>
+                        </div>
+                        <div className="col-md-6">
+                            <ul className="list-group">
+                                {renderGuesses}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f09546e9-b1c2-42d8-8254-198eed9ccb45" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/crud.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/board_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/board_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-buggle/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-buggle/src/components/Guesses.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/components/Guesses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../react-buggle/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/store.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557496295638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557511836428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1557219974491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$crud_py.coverage" NAME="crud_py Coverage Results" MODIFIED="1556805512714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$boggle_api.coverage" NAME="boggle_api Coverage Results" MODIFIED="1538471747966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -41,12 +36,12 @@
     <session id="-766196940">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1593" />
+          <entry key="py" value="1651" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1593" />
+          <entry key="Python" value="1651" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,6 +52,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Python" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -75,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
+            <state relative-caret-position="6880">
               <caret line="431" column="8" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
             </state>
           </provider>
@@ -84,12 +86,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+            <state relative-caret-position="353">
+              <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
               <folding>
-                <marker date="1557497842280" expanded="true" signature="1698:1867" ph="..." />
-                <marker date="1557497842280" expanded="true" signature="1920:2748" ph="..." />
-                <marker date="1557497842280" expanded="true" signature="2327:2640" ph="..." />
+                <marker date="1557511848956" expanded="true" signature="1738:1907" ph="..." />
               </folding>
             </state>
           </provider>
@@ -98,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="175" column="36" lean-forward="true" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+            <state relative-caret-position="400">
+              <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <marker date="1557497677915" expanded="true" signature="2660:2661" ph="..." />
@@ -121,15 +121,12 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Board</find>
-      <find>mam</find>
       <find>user_id</find>
       <find>dice_dict</find>
       <find>words</find>
       <find>opentaal</find>
       <find>nur</find>
       <find>TWL</find>
-      <find>print</find>
       <find>b</find>
       <find>Boggle</find>
       <find>g</find>
@@ -151,6 +148,9 @@
       <find>ready</find>
       <find>se</find>
       <find>cursor</find>
+      <find>solve</find>
+      <find>print</find>
+      <find>add_board</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,9 +183,57 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="730" />
-    <option name="width" value="710" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/node_modules/accepts/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/after/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/arraybuffer.slice/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/async-limiter/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/backo2/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/base64-arraybuffer/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/base64id/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/better-assert/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/blob/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/callsite/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/component-bind/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/component-emitter/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/component-inherit/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/cookie/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io-client/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io-client/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io-client/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io-parser/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/engine.io/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/has-binary2/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/has-cors/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/indexof/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/isarray/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/mime-db/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/mime-types/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/negotiator/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/object-component/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/parseqs/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/parseuri/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-adapter/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-client/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-client/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-client/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-parser/node_modules/debug/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-parser/node_modules/ms/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io-parser/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/socket.io/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/to-array/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/ws/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/xmlhttprequest-ssl/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/yeast/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -194,7 +242,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,6 +253,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,15 +391,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16801292" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1702432" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.2109589" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.21084337" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -368,7 +416,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18416801" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18383405" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24034335" />
@@ -398,6 +446,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557429890626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -453,10 +504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-            <marker date="1557232416764" expanded="true" signature="274:277" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -464,9 +511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="11" selection-start-column="11" selection-end-column="11" />
-          <folding>
-            <marker date="1557225182064" expanded="true" signature="231:274" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -478,24 +522,8 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/socketio/base_manager.py" />
-    <entry file="das://2f71c966-6f1e-4ef7-b55c-f11697cf942f/schema/main/table/board">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c18dc2ea-e94a-4bd7-be15-90bef22d22d6/schema/main/table/board">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://2f71c966-6f1e-4ef7-b55c-f11697cf942f/schema/main/table/board" />
+    <entry file="das://c18dc2ea-e94a-4bd7-be15-90bef22d22d6/schema/main/table/board" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8edc2ebd-9c28-462c-8bff-c608671469dd/console.sql" />
     <entry file="file://$PROJECT_DIR$/models/board.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -526,7 +554,7 @@
     </entry>
     <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
+        <state relative-caret-position="6880">
           <caret line="431" column="8" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
         </state>
       </provider>
@@ -540,8 +568,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="175" column="36" lean-forward="true" selection-start-line="175" selection-start-column="36" selection-end-line="175" selection-end-column="36" />
+        <state relative-caret-position="400">
+          <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <marker date="1557497677915" expanded="true" signature="2660:2661" ph="..." />
@@ -552,12 +580,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+        <state relative-caret-position="353">
+          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
           <folding>
-            <marker date="1557497842280" expanded="true" signature="1698:1867" ph="..." />
-            <marker date="1557497842280" expanded="true" signature="1920:2748" ph="..." />
-            <marker date="1557497842280" expanded="true" signature="2327:2640" ph="..." />
+            <marker date="1557511848956" expanded="true" signature="1738:1907" ph="..." />
           </folding>
         </state>
       </provider>

@@ -10,7 +10,7 @@ import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
 
 const client = axios.create({
-  baseURL: 'http://141.252.234.193:5000/api/',
+  baseURL: 'http://localhost:5000/api/',
   responseType: 'json'
 })
 

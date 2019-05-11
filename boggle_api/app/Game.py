@@ -79,6 +79,23 @@ class Game:
 
         return {'time': remaining_second, 'status': self.game_over, 'cursors': self.cursors}
 
+    def get_game_score(self):
+        scores = []
+
+        for player in self.players:
+            total_points = 0
+            all_words = []
+            for guess in self.guessed:
+                if player['player_id'] == guess['player_id']:
+                    total_points += guess['points']
+
+                    if guess['points'] > 0:
+                        all_words.append(guess['word'])
+
+            scores.append({'player_id': player['player_id'], 'points': total_points, 'words': all_words})
+
+        return scores
+
     def set_cursor(self, player_id, index):
         for cursor in self.cursors:
             if cursor['player_id'] == player_id:

@@ -2,7 +2,6 @@ import json
 import secrets
 import string
 import ast
-import time
 from random import shuffle, randint
 from threading import Lock
 
@@ -43,6 +42,7 @@ def add_board():
     db.session.commit()
 
     return board_schema.jsonify(new_board)
+
 
 # endpoint to show all boards
 @app.route("/api/boards", methods=["GET"])
@@ -188,17 +188,21 @@ def on_message(data):
     game = ROOMS[room]
     game.set_cursor(request.sid, index)
 
-    emit('game_loop', json.dumps(game.get_game_loop()))
-
 
 def game_loop():
     while True:
-        for key in ROOMS:
+        for key in list(ROOMS.keys()):
             game = ROOMS[key]
 
-            socketio.sleep(1/12)
+            socketio.sleep(1/24)
+
+            if game.game_over:
+                socketio.emit('game_end', json.dumps(game.get_game_score()), room=key)
+
+                del ROOMS[key]
 
             socketio.emit('game_loop', json.dumps(game.get_game_loop()), room=key)
+
 
 
 

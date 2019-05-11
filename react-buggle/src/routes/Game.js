@@ -2,37 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom'
 import { getWordCheck, getSolution, deleteBoard } from '../actions/boardActions'
-import { message } from '../actions/socketEvents'
+import { ready, joinRoom, wordCheck, gameLoop } from '../messageTypes'
 import Guesses from '../components/Guesses'
 import io from 'socket.io-client'
 
-const joinRoom = (room, username) => {
-    return {
-        room,
-        username
-    }
-}
-
-const ready = (room, is_ready) => {
-    return {
-        room,
-        is_ready
-    }
-}
-
-const wordCheck = (room, word) => {
-    return {
-        room,
-        word
-    }
-}
-
-const gameLoop = (room, cursor) => {
-    return { 
-        room, 
-        cursor
-    } 
-}
 
 class Game extends Component {
     state = {
@@ -43,7 +16,7 @@ class Game extends Component {
         timeLeft: 60,
         name: '',
         playerId: '',
-
+        scores: [],
         players: [],
         guessed: [],
         cursors: [],
@@ -62,9 +35,8 @@ class Game extends Component {
         this.setState({ name: name })
     }
 
-     /** Returns to route home and deletes board */
-     goBack = () => {
-
+    /** Returns to route home and deletes board */
+    goBack = () => {
         if (this.socket)
             this.socket.disconnect()
 
@@ -118,10 +90,16 @@ class Game extends Component {
 
         this.socket.on('game_loop', data => {
             const parsed_data = JSON.parse(data)
-            console.log(parsed_data)
             this.setState({
                 timeLeft: parsed_data.time,
                 cursors: parsed_data.cursors
+            })
+        })
+
+        this.socket.on('game_end', data => {
+            console.log(data)
+            this.setState({
+                scores: JSON.parse(data)
             })
         })
 
@@ -135,7 +113,7 @@ class Game extends Component {
     }
 
     gameLoop = () => {
-        // this.socket.emit('game_loop', gameLoop(this.props.board.board.game_code, this.state.selected))
+        this.socket.emit('game_loop', gameLoop(this.props.board.board.game_code, this.state.selected))
     }
 
     /** Convert the board string to a workable 2D array */
@@ -260,7 +238,7 @@ class Game extends Component {
     }
 
     /** Checks if word is correct after mouseUp*/
-    mouseUp = () => {
+    onMouseUp = () => {
         let { selected, letters, gameOver } = this.state
 
         if (gameOver) {
@@ -327,7 +305,7 @@ class Game extends Component {
             return (<Redirect to="/"/>)
 
         return (
-            <div className="container" onMouseUp={this.mouseUp}>
+            <div className="container" onMouseUp={this.onMouseUp}>
                 <div className="row">
                     <div className="col-md-5">
                         <div className="card begin-card">

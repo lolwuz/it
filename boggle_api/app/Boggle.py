@@ -1,6 +1,31 @@
 import os
 
 
+def load_dictionary(file):
+    """
+    Loads a dictionary file into Boggle object's word list
+
+    :param file: Path to the dictionary file
+    :return: None
+    """
+    words = set()
+    prefixes = set()
+
+    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(THIS_FOLDER, '../', file)
+
+    with open(my_file, 'r') as f:
+        next(f)
+        for line in f:
+            word = line.rstrip()
+            if len(word) >= 3:
+                words.add(word)
+                for i in range(len(word)):
+                    prefixes.add(word[:i])
+
+    return words, prefixes
+
+
 class Boggle:
     def __init__(self, file, size=4, points=None):
         """
@@ -14,7 +39,7 @@ class Boggle:
         self.size = size
         self.board = [[' '] * self.size for _ in range(self.size)]
         self.adjacency = self.build_adjacency()
-        self.words, self.prefixes = self.load_dictionary(file)
+        self.words, self.prefixes = load_dictionary(file)
 
         # Points per word of given length
         points = points if points is not None else {3: 1, 5: 2, 6: 3, 7: 5, 8: 11}
@@ -62,30 +87,6 @@ class Boggle:
                 adjacency[(row, col)] = self.adjacent((row, col))
 
         return adjacency
-
-    def load_dictionary(self, file):
-        """
-        Loads a dictionary file into Boggle object's word list
-
-        :param name: Path to the dictionary file
-        :return: None
-        """
-        words = set()
-        prefixes = set()
-
-        THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-        my_file = os.path.join(THIS_FOLDER, '../', file)
-
-        with open(my_file, 'r') as f:
-            next(f)
-            for line in f:
-                word = line.rstrip()
-                if len(word) >= 3:
-                    words.add(word)
-                    for i in range(len(word)):
-                        prefixes.add(word[:i])
-
-        return words, prefixes
 
     def get_letter(self, pos):
         """

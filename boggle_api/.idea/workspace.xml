@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f09546e9-b1c2-42d8-8254-198eed9ccb45" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2f71c966-6f1e-4ef7-b55c-f11697cf942f.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2f71c966-6f1e-4ef7-b55c-f11697cf942f/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/999e2955-8d46-4249-bcb4-133df763751c.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c18dc2ea-e94a-4bd7-be15-90bef22d22d6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c18dc2ea-e94a-4bd7-be15-90bef22d22d6/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/crud.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/crud.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/crud.sqlite" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/board_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes/board_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../react-buggle/src/routes/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +30,11 @@
     <SUITE FILE_PATH="coverage/boggle_api$crud_py.coverage" NAME="crud_py Coverage Results" MODIFIED="1556805512714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/boggle_api$boggle_api.coverage" NAME="boggle_api Coverage Results" MODIFIED="1538471747966" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="90dacffd-e6b4-483b-a029-5f7ed8adc050" value="Blue" />
+    </colors>
+  </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_DATA_SOURCES" value="true" />
@@ -29,87 +46,138 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="crud.sqlite" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="crud.sqlite" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="crud.sqlite" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-766196940">
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="py" value="1651" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Python" value="1651" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="py" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Python" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6880">
-              <caret line="431" column="8" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Game.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
-              <folding>
-                <marker date="1557511848956" expanded="true" signature="1738:1907" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <marker date="1557497677915" expanded="true" signature="2660:2661" ph="..." />
-                <marker date="1557497677915" expanded="true" signature="4530:4531" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/models/board.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="136">
+                  <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/models/score.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="289">
+                  <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/sqlalchemy/sql/sqltypes.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="212">
+                  <caret line="928" column="51" selection-start-line="928" selection-start-column="43" selection-end-line="928" selection-end-column="51" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Game.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-714">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="352">
+                  <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="das://90dacffd-e6b4-483b-a029-5f7ed8adc050/schema/main/table/board">
+              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                <state projectRestartId="24ce433f-4ffd-45be-8bbc-53b9bae41d2a">
+                  <filtering>
+                    <filter text="" />
+                  </filtering>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/models/__init__.py">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="374">
+                  <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/90dacffd-e6b4-483b-a029-5f7ed8adc050/console.sql">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="422">
+                  <caret line="198" column="31" selection-start-line="198" selection-start-column="31" selection-end-line="198" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -121,11 +189,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user_id</find>
-      <find>dice_dict</find>
-      <find>words</find>
-      <find>opentaal</find>
-      <find>nur</find>
       <find>TWL</find>
       <find>b</find>
       <find>Boggle</find>
@@ -151,7 +214,15 @@
       <find>solve</find>
       <find>print</find>
       <find>add_board</find>
+      <find>String()</find>
+      <find>Boar</find>
+      <find>models</find>
+      <find>d</find>
+      <find>gevent</find>
     </findStrings>
+    <dirStrings>
+      <dir>C:\Users\lolwuz\Documents\GitHub\it\boggle_api</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -163,7 +234,6 @@
         <option value="$PROJECT_DIR$/constant/dice_dict.py" />
         <option value="$PROJECT_DIR$/constant/word_points.py" />
         <option value="$PROJECT_DIR$/app/routes.py" />
-        <option value="$PROJECT_DIR$/models/board.py" />
         <option value="$PROJECT_DIR$/crud.py" />
         <option value="$PROJECT_DIR$/jquery_app.py" />
         <option value="$PROJECT_DIR$/angular/angular_app.py" />
@@ -171,70 +241,18 @@
         <option value="$PROJECT_DIR$/routes/crossdomain.py" />
         <option value="$PROJECT_DIR$/app/Boggle.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/models/score.py" />
+        <option value="$PROJECT_DIR$/models/board.py" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/routes/board_routes.py" />
         <option value="$PROJECT_DIR$/app/Game.py" />
+        <option value="$PROJECT_DIR$/routes/board_routes.py" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/node_modules/accepts/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/after/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/arraybuffer.slice/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/async-limiter/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/backo2/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/base64-arraybuffer/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/base64id/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/better-assert/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/blob/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/callsite/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/component-bind/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/component-emitter/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/component-inherit/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/cookie/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io-client/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io-client/node_modules/ms/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io-client/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io-parser/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io/node_modules/ms/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/engine.io/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/has-binary2/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/has-cors/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/indexof/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/isarray/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mime-db/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/mime-types/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ms/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/negotiator/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/object-component/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/parseqs/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/parseuri/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-adapter/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-client/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-client/node_modules/ms/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-client/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-parser/node_modules/debug/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-parser/node_modules/ms/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io-parser/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/socket.io/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/to-array/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/ws/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/xmlhttprequest-ssl/package.json" />
-      <path value="$PROJECT_DIR$/node_modules/yeast/package.json" />
-    </packageJsonPaths>
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -248,6 +266,21 @@
             <path>
               <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
               <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="boggle_api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="boggle_api" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -375,11 +408,12 @@
       <updated>1538471300118</updated>
       <workItem from="1557420293211" duration="379000" />
       <workItem from="1557428358661" duration="5842000" />
+      <workItem from="1557587271117" duration="6883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6221000" />
+    <option name="totallyTimeSpent" value="13104000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -391,15 +425,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1702432" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17217484" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.21084337" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4985694" visible="true" weight="0.25460455" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -407,8 +441,8 @@
       <window_info anchor="bottom" id="Database Console" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.2665222" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.26218852" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50143063" side_tool="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Python Console" order="13" sideWeight="0.49928468" weight="0.32891566" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32891566" />
@@ -416,7 +450,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18383405" />
+      <window_info anchor="right" id="Database" order="4" weight="0.18336888" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24034335" />
@@ -447,11 +481,8 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557429890626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/boggle_api$app_deploy.coverage" NAME="app_deploy Coverage Results" MODIFIED="1557594546543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a9c8666e-9a5a-4b8d-8b66-b17c2624ac96/console.sql" />
@@ -525,13 +556,6 @@
     <entry file="das://2f71c966-6f1e-4ef7-b55c-f11697cf942f/schema/main/table/board" />
     <entry file="das://c18dc2ea-e94a-4bd7-be15-90bef22d22d6/schema/main/table/board" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8edc2ebd-9c28-462c-8bff-c608671469dd/console.sql" />
-    <entry file="file://$PROJECT_DIR$/models/board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="16" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/999e2955-8d46-4249-bcb4-133df763751c/console.sql" />
     <entry file="file://$PROJECT_DIR$/crud.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -542,48 +566,73 @@
     </entry>
     <entry file="das://c1a200e8-b515-48b7-b865-26686e71ee0f/schema/main/table/board" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c1a200e8-b515-48b7-b865-26686e71ee0f/console.sql" />
+    <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/sqlalchemy/sql/sqltypes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="928" column="51" selection-start-line="928" selection-start-column="43" selection-end-line="928" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        <state relative-caret-position="374">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/flask_socketio/__init__.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/90dacffd-e6b4-483b-a029-5f7ed8adc050/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://90dacffd-e6b4-483b-a029-5f7ed8adc050/schema/main/table/board">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="24ce433f-4ffd-45be-8bbc-53b9bae41d2a">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/score.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6880">
-          <caret line="431" column="8" selection-start-line="431" selection-start-column="8" selection-end-line="431" selection-end-column="8" />
+        <state relative-caret-position="289">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1557497677915" expanded="true" signature="2660:2661" ph="..." />
-            <marker date="1557497677915" expanded="true" signature="4530:4531" ph="..." />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="53" column="34" lean-forward="true" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+        <state relative-caret-position="-714">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/board_routes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="198" column="31" selection-start-line="198" selection-start-column="31" selection-end-line="198" selection-end-column="31" />
           <folding>
-            <marker date="1557511848956" expanded="true" signature="1738:1907" ph="..." />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

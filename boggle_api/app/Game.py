@@ -1,10 +1,12 @@
 import ast
 import datetime
 import json
+from flask_socketio import emit
 
 from app.Boggle import Boggle
 from constant import word_points
 from models.board import Board
+from models.score import Score
 
 b = Boggle("constant/TWL06.txt")
 

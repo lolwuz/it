@@ -2,25 +2,28 @@ import json
 import secrets
 import string
 import ast
+import time
 from random import shuffle, randint
+from threading import Lock
+
 from flask import jsonify, request
 from app import app, db, socketio
 from app.Boggle import Boggle
 from app.Game import Game
 from constant import dice_dict, word_points
 from models.board import Board, BoardSchema
-from flask_cors import cross_origin
-from flask_socketio import join_room, leave_room, emit, send
+from flask_socketio import join_room, leave_room, emit
 
 board_schema = BoardSchema()
 boards_schema = BoardSchema(many=True)
 
-
 b = Boggle("constant/TWL06.txt")
+
+thread = None
+thread_lock = Lock()
 
 
 @app.route("/api/board", methods=["POST"])
-@cross_origin()
 def add_board():
     def code_generator(size=6):
         return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(size))
@@ -41,10 +44,8 @@ def add_board():
 
     return board_schema.jsonify(new_board)
 
-
 # endpoint to show all boards
 @app.route("/api/boards", methods=["GET"])
-@cross_origin()
 def get_boards():
     all_boards = Board.query.all()
     result = boards_schema.dump(all_boards)
@@ -53,7 +54,6 @@ def get_boards():
 
 # endpoint to get board detail by id
 @app.route("/api/board/<game_code>", methods=["GET"])
-@cross_origin()
 def board_detail(game_code):
     board = Board.query.filter_by(game_code=game_code).first()
     return board_schema.jsonify(board)
@@ -61,7 +61,6 @@ def board_detail(game_code):
 
 # endpoint to update board
 @app.route("/api/board/<game_code>/check/<word>", methods=["GET"])
-@cross_origin()
 def is_valid_word(game_code, word):
     board = Board.query.filter_by(game_code=game_code).first()
 
@@ -88,7 +87,6 @@ def is_valid_word(game_code, word):
 
 
 @app.route("/api/board/solution/<game_code>", methods=["GET"])
-@cross_origin()
 def get_solution(game_code):
     board = Board.query.filter_by(game_code=game_code).first()
 
@@ -161,10 +159,14 @@ def on_word(data):
     game.set_player_ready(request.sid, is_ready)
 
     if game.started:
-        emit('lobby_update', json.dumps(game.players), room=room)
         emit('lobby_start', json.dumps(game.board), room=room)
-    else:
-        emit('lobby_update', json.dumps(game.players), room=game.game_code)
+
+        global thread
+        with thread_lock:
+            if thread is None:
+                thread = socketio.start_background_task(game_loop)
+
+    emit('lobby_update', json.dumps(game.players), room=game.game_code)
 
 
 @socketio.on('check_word')
@@ -187,3 +189,17 @@ def on_message(data):
     game.set_cursor(request.sid, index)
 
     emit('game_loop', json.dumps(game.get_game_loop()))
+
+
+def game_loop():
+    while True:
+        for key in ROOMS:
+            game = ROOMS[key]
+
+            socketio.sleep(1/12)
+
+            socketio.emit('game_loop', json.dumps(game.get_game_loop()), room=key)
+
+
+
+

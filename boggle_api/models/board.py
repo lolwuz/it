@@ -14,4 +14,4 @@ class Board(db.Model):
 class BoardSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('board', 'game_code')
+        fields = ('id', 'board', 'game_code')

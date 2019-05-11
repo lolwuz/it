@@ -81,7 +81,7 @@ class Game extends Component {
         let room = this.props.board.board.game_code
         let name = this.state.name
 
-        this.socket = io('localhost:5000/')
+        this.socket = io('localhost:5000', {transports: ['websocket']})
 
         this.socket.on('connect', () => {
             console.log('connected to the server')
@@ -118,6 +118,7 @@ class Game extends Component {
 
         this.socket.on('game_loop', data => {
             const parsed_data = JSON.parse(data)
+            console.log(parsed_data)
             this.setState({
                 timeLeft: parsed_data.time,
                 cursors: parsed_data.cursors
@@ -134,7 +135,7 @@ class Game extends Component {
     }
 
     gameLoop = () => {
-        this.socket.emit('game_loop', gameLoop(this.props.board.board.game_code, this.state.selected))
+        // this.socket.emit('game_loop', gameLoop(this.props.board.board.game_code, this.state.selected))
     }
 
     /** Convert the board string to a workable 2D array */

@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class buggleService{
-  private boardUrl = 'http://lolwuz.pythonanywhere.com/api/board';  // URL to web api
+  private boardUrl = 'https://buggle.ga/api/board';  // URL to web api
 
   public game_code: string = '';
   public guessed: Gues[] = []; // Store for guessed words

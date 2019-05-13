@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class Guesses extends Component {
-    getClass = (guessed, player_id, points) => {
+    /** Returns the class for guess */
+    getClass = (points) => {
         if (points === 0) {
             return 'list-group-item-danger'
         } else {
@@ -11,7 +12,7 @@ class Guesses extends Component {
     }
 
     render() {
-        const { players, guessed, playerId } = this.props
+        const { players, guessed, playerId } = this.props.io
 
         let renderGuesses = guessed.map((guess, index) => {
             let name = 'unnamed'
@@ -26,7 +27,7 @@ class Guesses extends Component {
                     key={index}
                     className={
                         'list-group-item ' +
-                        this.getClass(guessed, guess.player_id, guess.points)
+                        this.getClass(guess.points)
                     }
                 >
                     {guess.points + ' - ' + guess.word + '  (' + name + ')'}
@@ -48,7 +49,7 @@ class Guesses extends Component {
                         key={index}
                         className={
                             'list-group-item ' +
-                            this.getClass(guessed, guess.player_id, guess.points)
+                            this.getClass(guess.points)
                         }
                     >
                         {guess.points + ' - ' + guess.word + '  (' + name + ')'}
@@ -81,7 +82,7 @@ class Guesses extends Component {
 
 const mapStateToProps = state => {
     return {
-        check: state.check
+        io: state.io
     }
 }
 

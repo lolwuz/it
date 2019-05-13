@@ -9,6 +9,9 @@
   height: 400px;
   width: 400px;
 
+  margin-left: auto;
+  margin-right: auto;
+
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
    -khtml-user-select: none; /* Konqueror HTML */
@@ -29,7 +32,8 @@
 #guesses {
   margin-top: 20px;
   max-height: 250px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 td {

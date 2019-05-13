@@ -6,6 +6,8 @@ from random import shuffle, randint
 from threading import Lock
 
 from flask import jsonify, request
+from flask_cors import cross_origin
+
 from app import app, db, socketio
 from app.Boggle import Boggle
 from app.Game import Game
@@ -23,6 +25,7 @@ thread_lock = Lock()
 
 
 @app.route("/api/board", methods=["POST"])
+@cross_origin()
 def add_board():
     def code_generator(size=6):
         return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(size))
@@ -46,6 +49,7 @@ def add_board():
 
 # endpoint to show all boards
 @app.route("/api/boards", methods=["GET"])
+@cross_origin()
 def get_boards():
     all_boards = Board.query.all()
     result = boards_schema.dump(all_boards)
@@ -54,6 +58,7 @@ def get_boards():
 
 # endpoint to get board detail by id
 @app.route("/api/board/<game_code>", methods=["GET"])
+@cross_origin()
 def board_detail(game_code):
     board = Board.query.filter_by(game_code=game_code).first()
     return board_schema.jsonify(board)
@@ -61,6 +66,7 @@ def board_detail(game_code):
 
 # endpoint to update board
 @app.route("/api/board/<game_code>/check/<word>", methods=["GET"])
+@cross_origin()
 def is_valid_word(game_code, word):
     board = Board.query.filter_by(game_code=game_code).first()
 
@@ -87,6 +93,7 @@ def is_valid_word(game_code, word):
 
 
 @app.route("/api/board/solution/<game_code>", methods=["GET"])
+@cross_origin()
 def get_solution(game_code):
     board = Board.query.filter_by(game_code=game_code).first()
 
@@ -106,6 +113,7 @@ ROOMS = {}  # dict to track active rooms
 @socketio.on('join')
 def on_join(data):
     """Join a game lobby"""
+    print(data)
     room = data['room']
     name = data['username']
 
@@ -124,7 +132,7 @@ def on_join(data):
         emit('lobby_start', json.dumps(game.board), room=room)
 
     emit('lobby_update', json.dumps(game.players), room=room)
-    emit('lobby_id', request.sid)
+    emit('lobby_id', json.dumps({'player_id': request.sid}))
 
 
 @socketio.on('leave')
@@ -185,16 +193,19 @@ def on_message(data):
     room = data['room']
     index = data['cursor']
 
+    print(data)
     game = ROOMS[room]
     game.set_cursor(request.sid, index)
 
 
 def game_loop():
+    count = 0
     while True:
+        socketio.sleep(1 / 24)
+        count += 1
+        print(count)
         for key in list(ROOMS.keys()):
             game = ROOMS[key]
-
-            socketio.sleep(1/24)
 
             if game.game_over:
                 socketio.emit('game_end', json.dumps(game.get_game_score()), room=key)

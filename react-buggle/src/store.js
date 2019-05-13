@@ -8,9 +8,10 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import axios from 'axios'
 import axiosMiddleware from 'redux-axios-middleware'
+import { createMySocketMiddleware } from './socketMiddleWare';
 
 const client = axios.create({
-  baseURL: 'http://localhost:5000/api/',
+  baseURL: 'https://buggle.ga/api/',
   responseType: 'json'
 })
 
@@ -21,7 +22,8 @@ export default function configureStore (initialState = {  }) {
     composeWithDevTools(
       applyMiddleware(
         thunk,
-        axiosMiddleware(client)
+        axiosMiddleware(client),
+        createMySocketMiddleware('https://buggle.ga/socket.io')
       )
     )
   )

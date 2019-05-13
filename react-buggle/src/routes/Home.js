@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { connect} from 'react-redux'
+import { connect } from 'react-redux'
 import {  Redirect } from 'react-router-dom'
 import { getBoard, postBoard } from '../actions/boardActions'
+import { start, send } from '../actions/ioActions'
+import { ready, joinRoom, wordCheck, gameLoop } from '../messageTypes'
+
 
 class Home extends Component {
     state = {

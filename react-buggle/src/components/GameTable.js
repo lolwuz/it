@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getWordCheck } from '../actions/boardActions'
 import { send, updateSelected } from '../actions/ioActions'
-import { wordCheck, gameLoop } from './../messageTypes';
+import { wordCheck } from './../messageTypes';
 import { clearSelected } from './../actions/ioActions';
 
 class GameTable extends Component  {

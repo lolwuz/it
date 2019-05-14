@@ -31,6 +31,8 @@ export default (state = defaultState, action) => {
             return { ...state, selected: [...state.selected, payload]}
         case 'clear_selected':
             return { ...state, selected: []}
+        case 'clear_game':
+            return defaultState
 
         // connection
         case 'connect':

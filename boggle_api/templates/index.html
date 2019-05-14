@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buggle - Internet Toepassingen</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet"
+          href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+          integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="card" style="margin-top: 20px">
+                <div class="card-header">
+                    <h1 class="card-title text-center">
+                        Jquery Buggle
+                    </h1>
+                </div>
+                <div class="card-body text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/JQuery-Logo.svg" class="img-fluid"
+                         style="height: 200px;"/>
+                </div>
+                <div class="card-footer">
+                    <a href="https://jquery.buggle.ga" class="btn btn-outline-primary btn-block">play</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="margin-top: 20px">
+                <div class="card-header">
+                    <h1 class="card-title text-center">
+                        Angular Buggle
+                    </h1>
+                </div>
+                <div class="card-body text-center">
+                    <img src="https://angular.io/assets/images/logos/angular/angular.svg" class="img-fluid"
+                         style="height: 200px;"/>
+                </div>
+                <div class="card-footer">
+                    <a href="https://angular.buggle.ga" class="btn btn-outline-danger btn-block">play</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="margin-top: 20px">
+                <div class="card-header text-center">
+                    <h1 class="card-title">
+                        React Buggle <span class="badge badge-info">socket.io</span>
+                    </h1>
+                </div>
+                <div class="card-body text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" class="img-fluid"
+                         style="height: 200px;"/>
+                </div>
+                <div class="card-footer">
+                    <a href="https://react.buggle.ga" class="btn btn-outline-info btn-block">play</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px">
+        <div class="col-sm-8">
+            <div class="card card-body">
+                <div class="alert alert-success">
+                    <span class="badge badge-success">POST</span>  /api/board <span class="float-right">Create a new board</span>
+                </div>
+                <div class="alert alert-info">
+                    <span class="badge badge-info">GET</span>  /api/boards <span class="float-right">Get saved boards</span>
+                </div>
+                <div class="alert alert-info">
+                    <span class="badge badge-info">GET</span>  /api/board/:game_code/check/:word <span class="float-right">Get word value</span>
+                </div>
+                <div class="alert alert-info">
+                    <span class="badge badge-info">GET</span>  /api/board/solution/:game_code <span class="float-right">Get game solution</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">About</h1>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">This game was made by Marten Hoekstra. Buggle is based on the word game Boggle.</p>
+
+                </div>
+                <div class="card-footer">
+                    <a href="https://github.com/lolwuz" class="btn btn-outline-primary">Github</a>
+                    <a href="https://nl.linkedin.com/in/martenlhoekstra" class="btn btn-outline-info">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

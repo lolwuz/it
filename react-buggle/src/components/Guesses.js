@@ -12,8 +12,9 @@ class Guesses extends Component {
     }
 
     render() {
-        const { players, guessed, playerId } = this.props.io
+        const { players, guessed, playerId, gameStarted } = this.props.io
 
+        // render guesses
         let renderGuesses = guessed.map((guess, index) => {
             let name = 'unnamed'
             for (let i = 0; i < players.length; i++) {
@@ -21,7 +22,7 @@ class Guesses extends Component {
                     name = players[i].name
                 }
             }
-
+        
             return (
                 <li
                     key={index}
@@ -59,24 +60,37 @@ class Guesses extends Component {
         
         })
 
-        return (
-            <div>
-                <div id="guesses">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <ul className="list-group">
-                                {renderMyGuesses}
-                            </ul>
-                        </div>
-                        <div className="col-md-6">
-                            <ul className="list-group">
-                                {renderGuesses}
-                            </ul>
+        if (gameStarted && guessed.length > 0) {
+            return (
+                <div>
+                    <div className='begin-card'>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="card">
+                                    <div className="card-header">
+                                        MY GUESSES
+                                    </div>
+                                    <ul className="list-group guessed">
+                                        {renderMyGuesses}
+                                    </ul>
+                                </div>
+                    
+                            </div>
+                            <div className="col-md-6">
+                                <div className="card">
+                                    <div className="card-header">
+                                        ALL GUESSES
+                                    </div>
+                                    <ul className="list-group guessed">
+                                        {renderGuesses}
+                                    </ul>
+                                </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        } else return (null)
     }
 }
 

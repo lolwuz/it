@@ -3,6 +3,15 @@
   text-align: center;
 }
 
+#solved-card {
+  margin-top: 40px;
+  height: 90vh;
+}
+
+#solved-words {
+  overflow-y: scroll;
+}
+
 #game-table {
   margin-top: 40px;
 
@@ -29,11 +38,9 @@
   margin-top: 20px;
 }
 
-#guesses {
-  margin-top: 20px;
+.guessed {
   max-height: 250px;
   overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 td {
@@ -70,4 +77,10 @@ td {
   margin: 15px;
   padding: 20px;
   text-align: center;
+}
+
+.alert-solved {
+  border-style: solid;
+  border-width: 1px;
+  border-color: whitesmoke;
 }

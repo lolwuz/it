@@ -50,3 +50,20 @@ export function getSolution(game_code) {
     }
   }
 }
+
+export function getScores(game_code) {
+  return {
+    types: ['R_SCORE', 'S_SCORE', 'F_SCORE'],
+    payload: {
+      request: {
+        url: `/board/scores/${game_code}`
+      },
+    }
+  }
+}
+
+export function deleteScores() {
+  return {
+    type: 'DELETE_SCORE',
+  }
+}

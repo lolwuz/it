@@ -7,9 +7,10 @@ class Score(db.Model):
     score = db.Column(db.Integer, unique=False)
     name = db.Column(db.String(12), unique=False)
 
-    def __init__(self, board, game_code):
-        self.board = board
-        self.game_code = game_code
+    def __init__(self, board_id, score, name):
+        self.board_id = board_id
+        self.score = score
+        self.name = name
 
 
 class ScoreSchema(ma.Schema):

@@ -1,4 +1,6 @@
 import os
+from collections import Counter
+from random import randint
 
 
 def load_dictionary(file):
@@ -11,19 +13,31 @@ def load_dictionary(file):
     words = set()
     prefixes = set()
 
-    THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-    my_file = os.path.join(THIS_FOLDER, '../', file)
+    this_folder = os.path.dirname(os.path.abspath(__file__))
+    my_file = os.path.join(this_folder, '../', file)
 
     with open(my_file, 'r') as f:
-        next(f)
         for line in f:
-            word = line.rstrip()
+            word = line.rstrip().upper()
             if len(word) >= 3:
                 words.add(word)
                 for i in range(len(word)):
                     prefixes.add(word[:i])
 
     return words, prefixes
+
+
+def to_array(fn):
+    return [[fn() for _ in range(4)] for _ in range(4)]
+
+
+def weighted_random(pairs):
+    total = sum(pair[1] for pair in pairs)
+    r = randint(1, total)
+    for (value, weight) in pairs:
+        r -= weight
+        if r <= 0:
+            return value
 
 
 class Boggle:
@@ -40,6 +54,7 @@ class Boggle:
         self.board = [[' '] * self.size for _ in range(self.size)]
         self.adjacency = self.build_adjacency()
         self.words, self.prefixes = load_dictionary(file)
+        self.letter_scores = Counter(self.letters())
 
         # Points per word of given length
         points = points if points is not None else {3: 1, 5: 2, 6: 3, 7: 5, 8: 11}
@@ -73,6 +88,7 @@ class Boggle:
                 new_col = col + j
                 if 0 <= new_row < self.size and 0 <= new_col < self.size and not (i == j == 0):
                     adj.append((new_row, new_col))
+                    
         return adj
 
     def build_adjacency(self):
@@ -132,6 +148,7 @@ class Boggle:
         """
         stack = [(n, [pos], self.get_letter(pos)) for n in self.adjacency[pos]]
         words = set()
+
         while stack:
             curr, path, chars = stack.pop()
             curr_char = self.get_letter(curr)
@@ -148,6 +165,7 @@ class Boggle:
 
                 # Check if adjacent positions have already been visited
                 stack.extend([(n, path + [curr], curr_chars) for n in curr_adj if n not in path])
+
         return words
 
     def score(self):
@@ -161,3 +179,12 @@ class Boggle:
         for word in words:
             score += self.points[len(word)]
         return score
+
+    def letters(self):
+        for word in self.words:
+            for letter in word.upper():
+                if 'A' <= letter <= 'Z':
+                    yield letter
+
+    def generate_random(self):
+        return to_array(lambda: weighted_random(self.letter_scores.items()))

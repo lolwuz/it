@@ -2,7 +2,7 @@
 /*
 src/reducers/checkReducer.js
 */
-export default (state = { loading: false, guesses: [], solutions: [], points: 0, }, action) => {
+export default (state = { loading: false, guesses: [], solutions: [], points: 0, totalPoints: 0 }, action) => {
     switch (action.type) {
         case 'R_BOARD_CHECK':
             return { ...state, loading: true }
@@ -27,6 +27,7 @@ export default (state = { loading: false, guesses: [], solutions: [], points: 0,
             return { ...state, loading: false, solutions: action.payload.data.solved, totalPoints: action.payload.data.points }
         case 'F_BOARD_SOLUTION':
             return { ...state, loading: false, error: 'Error while fetching solution' }
+
         case 'DELETE_BOARD':
             return { ...state, loading: false, guesses: [], solutions: [], points: 0 }
         default:

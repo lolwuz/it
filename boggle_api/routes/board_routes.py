@@ -3,9 +3,9 @@ import secrets
 import string
 import ast
 from random import shuffle, randint
-from threading import Lock
-
-from flask import jsonify, request
+import numpy
+import sqlalchemy
+from flask import jsonify, request, abort
 from flask_cors import cross_origin
 
 from app import app, db, socketio
@@ -13,15 +13,18 @@ from app.Boggle import Boggle
 from app.Game import Game
 from constant import dice_dict, word_points
 from models.board import Board, BoardSchema
+from models.score import Score, ScoreSchema
 from flask_socketio import join_room, leave_room, emit
+
 
 board_schema = BoardSchema()
 boards_schema = BoardSchema(many=True)
 
-b = Boggle("constant/TWL06.txt")
+score_schema = ScoreSchema()
+scores_schema = ScoreSchema(many=True)
 
-thread = None
-thread_lock = Lock()
+
+b = Boggle("constant/lower.lst")
 
 
 @app.route("/api/board", methods=["POST"])
@@ -30,16 +33,38 @@ def add_board():
     def code_generator(size=6):
         return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(size))
 
-    random_dice_list = []
-    for dice in dice_dict.dice:
-        random_dice = dice[randint(0, 5)]
-        random_dice_list.append(random_dice)
+    def random_board():
+        """ generate a random board with dices """
+        random_dice_list = []
+        for dice in dice_dict.dice:
+            random_dice = dice[randint(0, 5)]
+            random_dice_list.append(random_dice)
 
-    shuffle(random_dice_list)
+        shuffle(random_dice_list)
 
-    json_random_dice_list = str(random_dice_list)
+        return str(random_dice_list)
 
-    new_board = Board(json_random_dice_list, code_generator())
+    def get_good_board():
+        """ Try to get a good board, no matter the cost """
+        while True:
+            new_random = random_board()
+
+            # letters on the board
+            letters = ast.literal_eval(new_random)
+            letters = ''.join(letters)
+
+            b.set_board(letters)
+            all_words = b.find_words()
+
+            count = 0
+            for word in all_words:
+                if len(word) >= 8:
+                    count += 1
+
+            if count > 4:
+                return new_random
+
+    new_board = Board(get_good_board(), code_generator())
 
     db.session.add(new_board)
     db.session.commit()
@@ -60,7 +85,8 @@ def get_boards():
 @app.route("/api/board/<game_code>", methods=["GET"])
 @cross_origin()
 def board_detail(game_code):
-    board = Board.query.filter_by(game_code=game_code).first()
+    board = Board.query.filter_by(game_code=game_code).first_or_404()
+
     return board_schema.jsonify(board)
 
 
@@ -68,7 +94,7 @@ def board_detail(game_code):
 @app.route("/api/board/<game_code>/check/<word>", methods=["GET"])
 @cross_origin()
 def is_valid_word(game_code, word):
-    board = Board.query.filter_by(game_code=game_code).first()
+    board = Board.query.filter_by(game_code=game_code).first_or_404()
 
     # letters on the board
     letters = ast.literal_eval(board.board)
@@ -95,7 +121,7 @@ def is_valid_word(game_code, word):
 @app.route("/api/board/solution/<game_code>", methods=["GET"])
 @cross_origin()
 def get_solution(game_code):
-    board = Board.query.filter_by(game_code=game_code).first()
+    board = Board.query.filter_by(game_code=game_code).first_or_404()
 
     # letters on the board
     letters = ast.literal_eval(board.board)
@@ -106,6 +132,16 @@ def get_solution(game_code):
     return jsonify({'solved': list(b.find_words()), 'points': b.score()})
 
 
+@app.route("/api/board/scores/<game_code>", methods=["GET"])
+@cross_origin()
+def get_scores(game_code):
+    board = Board.query.filter_by(game_code=game_code).first_or_404()
+    scores = Score.query.filter_by(board_id=board.id).all()
+
+    result = scores_schema.dump(scores)
+    return jsonify(result.data)
+
+
 """ SOCKET FUNCTIONS """
 ROOMS = {}  # dict to track active rooms
 
@@ -113,12 +149,11 @@ ROOMS = {}  # dict to track active rooms
 @socketio.on('join')
 def on_join(data):
     """Join a game lobby"""
-    print(data)
     room = data['room']
     name = data['username']
 
     if room not in ROOMS:
-        game = Game(data['room'])
+        game = Game(data['room'], b)
         ROOMS[room] = game
 
     game = ROOMS[room]
@@ -169,52 +204,29 @@ def on_word(data):
     if game.started:
         emit('lobby_start', json.dumps(game.board), room=room)
 
-        global thread
-        with thread_lock:
-            if thread is None:
-                thread = socketio.start_background_task(game_loop)
-
     emit('lobby_update', json.dumps(game.players), room=game.game_code)
 
 
 @socketio.on('check_word')
 def on_word(data):
     room = data['room']
+
     word = data['word']
     game = ROOMS[room]
 
-    game.new_word(word, request.sid)
-
-    emit('game_update', json.dumps(game.guessed), room=room)
+    if not game.game_over:
+        game.new_word(word, request.sid)
+        emit('game_update', json.dumps(game.guessed), room=room)
 
 
 @socketio.on('game_loop')
 def on_message(data):
     room = data['room']
     index = data['cursor']
-
-    print(data)
     game = ROOMS[room]
     game.set_cursor(request.sid, index)
 
-
-def game_loop():
-    count = 0
-    while True:
-        socketio.sleep(1 / 24)
-        count += 1
-        print(count)
-        for key in list(ROOMS.keys()):
-            game = ROOMS[key]
-
-            if game.game_over:
-                socketio.emit('game_end', json.dumps(game.get_game_score()), room=key)
-
-                del ROOMS[key]
-
-            socketio.emit('game_loop', json.dumps(game.get_game_loop()), room=key)
-
-
-
-
-
+    if game.game_over:
+        socketio.emit('game_end', json.dumps(game.get_game_score()), room=request.sid)
+    else:
+        socketio.emit('game_loop', json.dumps(game.get_game_loop()), room=request.sid)

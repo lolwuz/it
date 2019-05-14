@@ -2,12 +2,12 @@ import json
 import secrets
 import string
 import ast
-from random import shuffle, randint
 import numpy
 import sqlalchemy
+
 from flask import jsonify, request, abort
 from flask_cors import cross_origin
-
+from random import shuffle, randint
 from app import app, db, socketio
 from app.Boggle import Boggle
 from app.Game import Game
@@ -30,6 +30,7 @@ b = Boggle("constant/lower.lst")
 @app.route("/api/board", methods=["POST"])
 @cross_origin()
 def add_board():
+    """ generate board and add to database """
     def code_generator(size=6):
         return ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(size))
 
@@ -76,6 +77,7 @@ def add_board():
 @app.route("/api/boards", methods=["GET"])
 @cross_origin()
 def get_boards():
+    """ get all boards from the database and diplay to json """
     all_boards = Board.query.all()
     result = boards_schema.dump(all_boards)
     return jsonify(result.data)
@@ -85,6 +87,7 @@ def get_boards():
 @app.route("/api/board/<game_code>", methods=["GET"])
 @cross_origin()
 def board_detail(game_code):
+    """ get board by game_code """
     board = Board.query.filter_by(game_code=game_code).first_or_404()
 
     return board_schema.jsonify(board)
@@ -94,6 +97,7 @@ def board_detail(game_code):
 @app.route("/api/board/<game_code>/check/<word>", methods=["GET"])
 @cross_origin()
 def is_valid_word(game_code, word):
+    """ get word validity """
     board = Board.query.filter_by(game_code=game_code).first_or_404()
 
     # letters on the board
@@ -121,6 +125,7 @@ def is_valid_word(game_code, word):
 @app.route("/api/board/solution/<game_code>", methods=["GET"])
 @cross_origin()
 def get_solution(game_code):
+    """ get all posible words within a board """
     board = Board.query.filter_by(game_code=game_code).first_or_404()
 
     # letters on the board
@@ -135,6 +140,7 @@ def get_solution(game_code):
 @app.route("/api/board/scores/<game_code>", methods=["GET"])
 @cross_origin()
 def get_scores(game_code):
+    """ returns all scores that have been made on the board """ 
     board = Board.query.filter_by(game_code=game_code).first_or_404()
     scores = Score.query.filter_by(board_id=board.id).all()
 
@@ -193,7 +199,8 @@ def on_disconnect():
 
 
 @socketio.on('ready')
-def on_word(data):
+def on_ready(data):
+    """" set player read """ 
     is_ready = data['is_ready']
     room = data['room']
 
@@ -209,6 +216,7 @@ def on_word(data):
 
 @socketio.on('check_word')
 def on_word(data):
+    """ check word send to the server """
     room = data['room']
 
     word = data['word']
@@ -221,6 +229,7 @@ def on_word(data):
 
 @socketio.on('game_loop')
 def on_message(data):
+    """ game loop """ 
     room = data['room']
     index = data['cursor']
     game = ROOMS[room]

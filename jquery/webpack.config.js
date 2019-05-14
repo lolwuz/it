@@ -1,32 +1,26 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 // Is the current build a development build
-const IS_DEV = (process.env.NODE_ENV === 'dev');
+const IS_DEV = process.env.NODE_ENV === "dev";
 
-const dirNode = 'node_modules';
-const dirApp = path.join(__dirname, 'app');
-const dirAssets = path.join(__dirname, 'assets');
+const dirNode = "node_modules";
+const dirApp = path.join(__dirname, "app");
+const dirAssets = path.join(__dirname, "assets");
 
-const appHtmlTitle = 'Webpack Boilerplate';
+const appHtmlTitle = "Webpack Boilerplate";
 
 /**
  * Webpack Configuration
  */
 module.exports = {
     entry: {
-        vendor: [
-            'lodash'
-        ],
-        bundle: path.join(dirApp, 'index')
+        vendor: ["lodash"],
+        bundle: path.join(dirApp, "index")
     },
     resolve: {
-        modules: [
-            dirNode,
-            dirApp,
-            dirAssets
-        ]
+        modules: [dirNode, dirApp, dirAssets]
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -34,7 +28,7 @@ module.exports = {
         }),
 
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'index.ejs'),
+            template: path.join(__dirname, "index.ejs"),
             title: appHtmlTitle
         })
     ],
@@ -42,7 +36,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
+                loader: "babel-loader",
                 exclude: /(node_modules)/,
                 options: {
                     compact: true
@@ -51,27 +45,27 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    "style-loader",
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             sourceMap: IS_DEV
                         }
-                    },
+                    }
                 ]
             },
             {
                 test: /\.scss/,
                 use: [
-                    'style-loader',
+                    "style-loader",
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             sourceMap: IS_DEV
                         }
                     },
                     {
-                        loader: 'sass-loader',
+                        loader: "sass-loader",
                         options: {
                             sourceMap: IS_DEV,
                             includePaths: [dirAssets]
@@ -81,9 +75,9 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif)$/,
-                loader: 'file-loader',
+                loader: "file-loader",
                 options: {
-                    name: '[path][name].[ext]'
+                    name: "[path][name].[ext]"
                 }
             }
         ]

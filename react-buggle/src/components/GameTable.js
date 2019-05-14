@@ -5,7 +5,7 @@ import { send, updateSelected } from '../actions/ioActions'
 import { wordCheck } from './../messageTypes';
 import { clearSelected } from './../actions/ioActions';
 
-class GameTable extends Component  {
+class GameTable extends Component {
     state = {
         lastPosition: 0
     }

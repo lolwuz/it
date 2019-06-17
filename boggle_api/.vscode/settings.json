@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/Users/lolwuz/Documents/GitHub/it/boggle_api/env/bin/python3",
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": true,
+    "python.linting.enabled": true,
+    "appService.showBuildDuringDeployPrompt": false
+}

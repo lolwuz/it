@@ -32,7 +32,7 @@ class Game {
         /** create an existing game */
         let game_code = $("#code-input").val();
 
-        this.current_board = new Board(game_code);
+        this.current_board = new Board(game_code, 60);
 
         this.setup_game();
     }
@@ -167,7 +167,7 @@ class Board {
                 let guess = $("<div/>").prependTo(guesses);
                 guess.addClass("alert");
                 guess.text(data.points + " - " + word);
-
+                
                 // Check if valid word.
                 if (data.is_valid) {
                     // Update points

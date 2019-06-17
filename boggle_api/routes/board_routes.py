@@ -125,7 +125,7 @@ def is_valid_word(game_code, word):
 @app.route("/api/board/solution/<game_code>", methods=["GET"])
 @cross_origin()
 def get_solution(game_code):
-    """ get all posible words within a board """
+    """ get all possible words within a board """
     board = Board.query.filter_by(game_code=game_code).first_or_404()
 
     # letters on the board
